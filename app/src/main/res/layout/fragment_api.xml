@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <EditText
+    android:id="@+id/et_api_key"
+    android:layout_width="match_parent"
+    android:layout_height="60sp"
+    android:hint="@string/enter_api"
+    android:padding="@dimen/touchable_spacing"
+    android:layout_margin="@dimen/touchable_spacing"
+    android:textAlignment="center"
+    android:textAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    />
+
+    <Button
+    android:id="@+id/bt_submit_api"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/touchable_size"
+    android:text="@string/save"
+    android:padding="@dimen/touchable_spacing"
+    android:textAppearance="@style/Base.TextAppearance.AppCompat.Button"
+    app:layout_constraintLeft_toRightOf="@id/bt_clear_api"
+    app:layout_constraintRight_toRightOf="parent"
+    app:layout_constraintTop_toBottomOf="@id/et_api_key"
+    />
+
+    <Button
+    android:id="@+id/bt_clear_api"
+    android:layout_width="wrap_content"
+    android:layout_height="@dimen/touchable_size"
+    android:text="@string/clear"
+    android:padding="@dimen/touchable_spacing"
+    android:textAppearance="@style/Base.TextAppearance.AppCompat.Button"
+    app:layout_constraintLeft_toLeftOf="parent"
+    app:layout_constraintRight_toLeftOf="@id/bt_submit_api"
+    app:layout_constraintTop_toBottomOf="@id/et_api_key"
+    />
+
+</android.support.constraint.ConstraintLayout>

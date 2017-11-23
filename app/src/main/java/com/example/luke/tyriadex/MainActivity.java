@@ -7,6 +7,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -21,34 +22,34 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, ApiFragment.OnDataPass {
 
-    private static String apiKey = null;
+    private static String API_KEY = null;
+    private static Fragment fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-//        Context context = getApplication();
+//        Context context = getApplication(); //use this style of shared preferences if there's more than one activity
 //        SharedPreferences sharedPref = context.getSharedPreferences("com.example.luke.tyriadex.pref", Context.MODE_PRIVATE);
-        apiKey = sharedPref.getString("newApiKey", null);
+        setApiKey(sharedPref.getString("newApiKey", null));
+        Log.d("LOG", "Main load api key: " + getApiKey());
 
         setContentView(R.layout.activity_main);
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        Fragment fragment = new CharacterFragment();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+        if (getApiKey() != null) {
+            fragment = new CharacterFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "character").commit();
+        }
+        else {
+            fragment = new ApiFragment();
+            FragmentManager fragmentManager = getSupportFragmentManager();
+            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "api").commit();
+        }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -59,41 +60,20 @@ public class MainActivity extends AppCompatActivity
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-//        final EditText editTextApiKey = findViewById(R.id.et_api_key);
-//        Button buttonSaveApiKey = findViewById(R.id.bt_submit_api);
-//        buttonSaveApiKey.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                if (editTextApiKey.getText().toString().equals("")) {
-//                    Toast.makeText(getApplicationContext(), "Please enter an API key", Toast.LENGTH_SHORT).show();
-//                }
-//                else {
-//                    apiKey = editTextApiKey.getText().toString();
-//                }
-//                //Toast.makeText(getApplicationContext(), apiKey, Toast.LENGTH_LONG).show(); //debug
-//            }
-//        });
-//        Button buttonClearApiKey = findViewById(R.id.bt_clear_api);
-//        buttonClearApiKey.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                apiKey = null;
-//                editTextApiKey.setText("");
-//                //Toast.makeText(getApplicationContext(), apiKey, Toast.LENGTH_LONG).show(); //debug
-//            }
-//        });
     }
 
     @Override
-    protected void onDestroy() {
+    protected void onStop() {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-//        Context context = getApplication();
+//        Context context = getApplication(); //use this style of shared preferences if there's more than one activity
 //        SharedPreferences sharedPref = context.getSharedPreferences("com.example.luke.tyriadex.pref", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
-        editor.putString("newApiKey", apiKey);
+        editor.putString("newApiKey", getApiKey());
         editor.apply();
 
-        super.onDestroy();
+        Log.d("LOG", "Main saving api key: " + getApiKey());
+
+        super.onStop();
     }
 
     @Override
@@ -112,33 +92,56 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        Fragment fragment = null;
+        Fragment newFragment = null;
 
-        if (id == R.id.nav_characters) {
-            fragment = new CharacterFragment();
-        } else if (id == R.id.nav_bank) {
-            fragment = new BankFragment();
-        } else if (id == R.id.nav_tp) {
-
-        } else if (id == R.id.nav_dailies) {
-
-        } else if (id == R.id.nav_api) {
-
-        } else if (id == R.id.nav_settings) {
-
+        switch (id) {
+            case R.id.nav_characters:
+                newFragment = new CharacterFragment();
+                break;
+            case R.id.nav_bank:
+                newFragment = new BankFragment();
+                break;
+            case R.id.nav_tp:
+                //
+                break;
+            case R.id.nav_dailies:
+                //
+                break;
+            case R.id.nav_api:
+                newFragment = new ApiFragment();
+                Bundle args = new Bundle();
+                args.putString("key", getApiKey());
+                newFragment.setArguments(args);
+                break;
+            case R.id.nav_settings:
+                //
+                break;
         }
 
-        if (fragment != null) {
+        if (newFragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment).commit();
-
-            DrawerLayout drawer = findViewById(R.id.drawer_layout);
-            drawer.closeDrawer(GravityCompat.START);
+            fragmentManager.beginTransaction().replace(R.id.content_frame, newFragment).commit();
         }
         else {
             //error
         }
+        DrawerLayout drawer = findViewById(R.id.drawer_layout);
+        drawer.closeDrawer(GravityCompat.START);
 
         return true;
+    }
+
+    @Override
+    public void onDataPass(String data) {
+        Log.d("LOG","Main api key: " + data);
+        setApiKey(data);
+    }
+
+    public void setApiKey(String newApiKey) {
+        API_KEY = newApiKey;
+    }
+
+    public String getApiKey() {
+        return API_KEY;
     }
 }

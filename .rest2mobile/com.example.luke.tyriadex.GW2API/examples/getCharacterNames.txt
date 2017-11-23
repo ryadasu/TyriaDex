@@ -1,0 +1,10 @@
++Name getCharacterNames
+
++Request
+GET https://api.guildwars2.com/v2/characters?access_token=
++Headers
++Body
+
++Response
++Body
+["TaleisinStormcrow","Lazeen","RaekarWolfpaw","SiranQuickstep","RannaThunderhammer","SyvanMistclaw","KazrahBloodclaw","DemoHoloEngi","DemoEleEle","Varissae"]
