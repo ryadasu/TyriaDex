@@ -3,6 +3,9 @@
   <component name="HistoryComponent">
     <option name="urls">
       <array>
+        <option value="https://api.guildwars2.com/v2/characters/?access_token=" />
+        <option value="https://api.guildwars2.com/v2/items/" />
+        <option value="https://api.guildwars2.com/v2/items/28445" />
         <option value="https://api.guildwars2.com/v2/characters?page=0&amp;access_token=" />
         <option value="https://api.guildwars2.com/v2/characters?page=0&amp;access_token=76EE69D4-505D-3F4A-A0B5-D2EA178A57A8A93C4FC6-40DC-4564-9D6F-AA3F4207E69A" />
         <option value="https://api.guildwars2.com/v2/characters?access_token=" />

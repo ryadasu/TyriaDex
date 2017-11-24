@@ -59,7 +59,6 @@ public class MainActivity extends AppCompatActivity
 
         NavigationView navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
-
     }
 
     @Override
@@ -93,13 +92,18 @@ public class MainActivity extends AppCompatActivity
         // Handle navigation view item clicks here.
         int id = item.getItemId();
         Fragment newFragment = null;
+        Bundle args = new Bundle();
 
         switch (id) {
             case R.id.nav_characters:
                 newFragment = new CharacterFragment();
+                args.putString("key", getApiKey());
+                newFragment.setArguments(args);
                 break;
             case R.id.nav_bank:
                 newFragment = new BankFragment();
+                args.putString("key", getApiKey());
+                newFragment.setArguments(args);
                 break;
             case R.id.nav_tp:
                 //
@@ -109,7 +113,6 @@ public class MainActivity extends AppCompatActivity
                 break;
             case R.id.nav_api:
                 newFragment = new ApiFragment();
-                Bundle args = new Bundle();
                 args.putString("key", getApiKey());
                 newFragment.setArguments(args);
                 break;

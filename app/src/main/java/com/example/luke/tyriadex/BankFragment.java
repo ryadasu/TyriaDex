@@ -7,6 +7,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 /**
@@ -14,8 +15,6 @@ import android.widget.Toast;
  */
 
 public class BankFragment extends Fragment {
-
-    private String type = "bank";
 
     public BankFragment() {
         //
@@ -27,6 +26,8 @@ public class BankFragment extends Fragment {
 
         View rootView = inflater.inflate(R.layout.fragment_bank, container, false);
 
+        TextView tv = rootView.findViewById(R.id.tv_bank);
+
         return rootView;
     }
 
@@ -35,9 +36,5 @@ public class BankFragment extends Fragment {
         super.onAttach(context);
 
 
-    }
-
-    public String getType() {
-        return type;
     }
 }
