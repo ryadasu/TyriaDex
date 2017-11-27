@@ -17,4 +17,11 @@
     <string name="nav_tp">Trading Post</string>
     <string name="nav_api">API Key</string>
     <string name="nav_settings">Settings</string>
+
+    <string name="load_chars">Loading Characters...</string>
+
+    <string name="trading_current_orders">Current Orders:</string>
+    <string name="trading_current_sales">Currently Selling:</string>
+    <string name="trading_past_buys">Recent Purchases:</string>
+    <string name="trading_past_sales">Recent Sales:</string>
 </resources>

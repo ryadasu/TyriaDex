@@ -1,16 +1,23 @@
 package com.example.luke.tyriadex;
 
 import android.content.Context;
+import android.os.AsyncTask;
+import android.util.Log;
 
 import com.example.luke.tyriadex.controller.api.GW2API;
 import com.example.luke.tyriadex.controller.api.GW2APIFactory;
+import com.example.luke.tyriadex.model.beans.BankResult;
+import com.example.luke.tyriadex.model.beans.CharacterByNameResult;
 import com.example.luke.tyriadex.model.beans.ItemByIdResult;
 import com.magnet.android.mms.MagnetMobileClient;
 import com.magnet.android.mms.async.Call;
 import com.magnet.android.mms.exception.SchemaException;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
+
+import javax.xml.validation.Schema;
 
 /**
  * Created by luke on 24/11/17.
@@ -19,23 +26,50 @@ import java.util.concurrent.ExecutionException;
 public class ApiCall {
 
     private static Context c;
-    private static String key;
     private static GW2APIFactory controllerFactory;
     private static GW2API api;
 
-    public static void update(Context con, String apiKey) {
+    public static void update(Context con) {
         c = con;
-        key = apiKey;
     }
 
-    public static String getCharacterNames(String key) throws SchemaException {
+    public static String getBank(String key) throws SchemaException {
         MagnetMobileClient magnetClient = MagnetMobileClient.getInstance(c);
         controllerFactory = new GW2APIFactory(magnetClient);
         api = controllerFactory.obtainInstance();
 
-        Call<List<String>> callObject = api.getCharacterNames(key, null);
-        //auto-generated object
-        List<String> result = null;
+        Call<List<BankResult>> callObject = api.getBank(key, null);
+        Log.d("LOG", callObject.toString());
+        List<BankResult> result = null;
+        try {
+            result = callObject.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        if (result != null) {
+            String ids = "";
+
+            for (int i = 0; i < 10; i++) {
+                ids += (String.valueOf(result.get(i).getCount()) + "x " + getItemById(String.valueOf(result.get(i).getId())) + ", ");
+            }
+
+            return ids;
+        } else {
+            return "Error retrieving bank";
+        }
+    }
+
+    public static String getCharacterByName(String charName, String key) throws SchemaException {
+        MagnetMobileClient magnetClient = MagnetMobileClient.getInstance(c);
+        controllerFactory = new GW2APIFactory(magnetClient);
+        api = controllerFactory.obtainInstance();
+
+        Call<CharacterByNameResult> callObject = api.getCharacterByName(charName, key, null);
+        Log.d("LOG", callObject.toString());
+        CharacterByNameResult result = null;
         try {
             result = callObject.get();
         } catch (InterruptedException e) {
@@ -46,12 +80,35 @@ public class ApiCall {
 
         if (result != null) {
             String s = "";
-            for (int i = 0; i < result.size(); i++) {
-                s += (result.get(i) + "\n");
-            }
+
+            s += (result.getGender() + " " + result.getRace() + " " + result.getProfession());
+
             return s;
         } else {
-            return "Error! Please try again";
+            return "Error retrieving character";
+        }
+    }
+
+    public static List<String> getCharacterNames(String key) throws SchemaException {
+        MagnetMobileClient magnetClient = MagnetMobileClient.getInstance(c);
+        controllerFactory = new GW2APIFactory(magnetClient);
+        api = controllerFactory.obtainInstance();
+
+        Call<List<String>> callObject = api.getCharacterNames(key, null);
+        List<String> result = null;
+        try {
+            result = callObject.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        if (result != null) {
+            return result;
+        } else {
+            List<String> strings = Arrays.asList("error");
+            return strings;
         }
     }
 
@@ -218,4 +275,5 @@ public class ApiCall {
 //            return "Error! Please try again";
 //        }
 //    }
+
 }

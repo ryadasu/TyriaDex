@@ -1,0 +1,10 @@
++Name getCurrentBuys
+
++Request
+GET https://api.guildwars2.com/v2/commerce/transactions/current/buys?access_token=
++Headers
++Body
+
++Response
++Body
+[{"id":1917768093,"item_id":19699,"price":174,"quantity":7,"created":"2017-11-27T05:09:26+00:00"}]

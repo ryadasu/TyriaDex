@@ -1,0 +1,10 @@
++Name getCurrentSales
+
++Request
+GET https://api.guildwars2.com/v2/commerce/transactions/current/sells?access_token=
++Headers
++Body
+
++Response
++Body
+[{"id":1887681967,"item_id":82866,"price":92,"quantity":53,"created":"2017-10-14T07:51:56+00:00"},{"id":1884008730,"item_id":84766,"price":3211,"quantity":1,"created":"2017-10-09T06:56:57+00:00"},{"id":1779209909,"item_id":46645,"price":19999,"quantity":1,"created":"2017-04-25T04:32:21+00:00"}]

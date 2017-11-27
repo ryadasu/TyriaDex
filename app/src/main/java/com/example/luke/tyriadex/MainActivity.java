@@ -42,6 +42,9 @@ public class MainActivity extends AppCompatActivity
 
         if (getApiKey() != null) {
             fragment = new CharacterFragment();
+            Bundle args = new Bundle();
+            args.putString("key", getApiKey());
+            fragment.setArguments(args);
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "character").commit();
         }

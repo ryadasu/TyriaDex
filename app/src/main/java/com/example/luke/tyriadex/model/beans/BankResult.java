@@ -10,16 +10,14 @@ import java.util.List;
 /**
  * Generated from json example
 {
-  "id" : 4548,
-  "slot" : "HelmAquatic",
-  "upgrades" : [ 24753 ],
-  "binding" : "Character",
-  "bound_to" : "Lazeen"
+  "id" : 42967,
+  "count" : 1,
+  "binding" : "Account"
 }
 
  */
 
-public class Equipment {
+public class BankResult {
 
   
   private String binding;
@@ -31,13 +29,10 @@ public class Equipment {
   private Integer charges;
 
   
+  private Integer count;
+
+  
   private Integer id;
-
-  
-  private Integer skin;
-
-  
-  private String slot;
 
   
   private Stats stats;
@@ -54,14 +49,11 @@ public class Equipment {
   public Integer getCharges() {
     return charges;
   }
+  public Integer getCount() {
+    return count;
+  }
   public Integer getId() {
     return id;
-  }
-  public Integer getSkin() {
-    return skin;
-  }
-  public String getSlot() {
-    return slot;
   }
   public Stats getStats() {
     return stats;
@@ -71,47 +63,43 @@ public class Equipment {
   }
 
   /**
-  * Builder for Equipment
+  * Builder for BankResult
   **/
-  public static class EquipmentBuilder {
-    private Equipment toBuild = new Equipment();
+  public static class BankResultBuilder {
+    private BankResult toBuild = new BankResult();
 
-    public EquipmentBuilder() {
+    public BankResultBuilder() {
     }
 
-    public Equipment build() {
+    public BankResult build() {
       return toBuild;
     }
 
-    public EquipmentBuilder binding(String value) {
+    public BankResultBuilder binding(String value) {
       toBuild.binding = value;
       return this;
     }
-    public EquipmentBuilder bound_to(String value) {
+    public BankResultBuilder bound_to(String value) {
       toBuild.bound_to = value;
       return this;
     }
-    public EquipmentBuilder charges(Integer value) {
+    public BankResultBuilder charges(Integer value) {
       toBuild.charges = value;
       return this;
     }
-    public EquipmentBuilder id(Integer value) {
+    public BankResultBuilder count(Integer value) {
+      toBuild.count = value;
+      return this;
+    }
+    public BankResultBuilder id(Integer value) {
       toBuild.id = value;
       return this;
     }
-    public EquipmentBuilder skin(Integer value) {
-      toBuild.skin = value;
-      return this;
-    }
-    public EquipmentBuilder slot(String value) {
-      toBuild.slot = value;
-      return this;
-    }
-    public EquipmentBuilder stats(Stats value) {
+    public BankResultBuilder stats(Stats value) {
       toBuild.stats = value;
       return this;
     }
-    public EquipmentBuilder upgrades(List<java.lang.Integer> value) {
+    public BankResultBuilder upgrades(List<java.lang.Integer> value) {
       toBuild.upgrades = value;
       return this;
     }

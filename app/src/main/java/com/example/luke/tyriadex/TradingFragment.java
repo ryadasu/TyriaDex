@@ -18,7 +18,7 @@ import com.magnet.android.mms.exception.SchemaException;
  * Created by luke on 22/11/17.
  */
 
-public class BankFragment extends Fragment {
+public class TradingFragment extends Fragment {
 
     String apiKey = null;
 
@@ -45,7 +45,7 @@ public class BankFragment extends Fragment {
         }
     }
 
-    public BankFragment() {
+    public TradingFragment() {
         //
     }
 
@@ -61,9 +61,12 @@ public class BankFragment extends Fragment {
         Log.d("LOG", "Bank Fragment load api key: " + apiKey);
         ApiCall.update(getContext());
 
-        TextView tvBank = rootView.findViewById(R.id.tv_bank);
-        BankAsyncCall async = new BankAsyncCall(tvBank);
-        async.execute(apiKey);
+        TextView currentOrders = rootView.findViewById(R.id.tv_trading_current_orders);
+        TextView currentSales = rootView.findViewById(R.id.tv_trading_current_sales);
+        TextView pastBuys = rootView.findViewById(R.id.tv_trading_past_buys);
+        TextView pastSales = rootView.findViewById(R.id.tv_trading_past_sales);
+//        BankAsyncCall async = new BankAsyncCall(tvBank);
+//        async.execute(apiKey);
 
         return rootView;
     }
