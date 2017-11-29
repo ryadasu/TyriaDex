@@ -1,0 +1,10 @@
++Name getDelivery
+
++Request
+GET https://api.guildwars2.com/v2/commerce/delivery?access_token=
++Headers
++Body
+
++Response
++Body
+{"coins":16937,"items":[{"id":19699,"count":7}]}

@@ -3,16 +3,16 @@
   <component name="HistoryComponent">
     <option name="urls">
       <array>
-        <option value="https://api.guildwars2.com/v2/commerce/transactions/current/sells?access_token=" />
-        <option value="https://api.guildwars2.com/v2/commerce/transactions/current/buys?access_token=" />
+        <option value="https://api.guildwars2.com/v2/currencies/" />
         <option value="https://api.guildwars2.com/v2/account/bank?access_token=" />
-        <option value="https://api.guildwars2.com/v2/characters/characterName?access_token=" />
-        <option value="https://api.guildwars2.com/v2/items/itemID" />
+        <option value="https://api.guildwars2.com/v2/account/wallet?access_token=" />
+        <option value="https://api.guildwars2.com/v2/account?access_token=" />
         <option value="https://api.guildwars2.com/v2/characters/?access_token=" />
         <option value="https://api.guildwars2.com/v2/items/" />
-        <option value="https://api.guildwars2.com/v2/items/28445" />
-        <option value="https://api.guildwars2.com/v2/characters?page=0&amp;access_token=" />
-        <option value="https://api.guildwars2.com/v2/characters?page=0&amp;access_token=76EE69D4-505D-3F4A-A0B5-D2EA178A57A8A93C4FC6-40DC-4564-9D6F-AA3F4207E69A" />
+        <option value="https://api.guildwars2.com/v2/commerce/delivery?access_token=" />
+        <option value="https://api.guildwars2.com/v2/commerce/transactions/history/sells?access_token=" />
+        <option value="https://api.guildwars2.com/v2/commerce/transactions/history/buys?access_token=" />
+        <option value="https://api.guildwars2.com/v2/characters?access_token=" />
       </array>
     </option>
   </component>

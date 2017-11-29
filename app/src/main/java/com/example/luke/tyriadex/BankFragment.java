@@ -21,6 +21,7 @@ import com.magnet.android.mms.exception.SchemaException;
 public class BankFragment extends Fragment {
 
     String apiKey = null;
+    BankAsyncCall async = null;
 
     private class BankAsyncCall extends AsyncTask<String, Void, String> {
 
@@ -60,18 +61,25 @@ public class BankFragment extends Fragment {
         }
         Log.d("LOG", "Bank Fragment load api key: " + apiKey);
         ApiCall.update(getContext());
+        ((MainActivity) getActivity()).setToolbarTitle("TyriaDex: Bank");
+
 
         TextView tvBank = rootView.findViewById(R.id.tv_bank);
-        BankAsyncCall async = new BankAsyncCall(tvBank);
+        async = new BankAsyncCall(tvBank);
         async.execute(apiKey);
 
         return rootView;
     }
 
     @Override
-    public void onAttach(Context context) {
-        super.onAttach(context);
+    public void onDetach() {
+        //TODO: cancel api call here
+        if (async != null) {
+            ApiCall.setCancel(true);
+            Log.d("LOG", "Api Cancel: " + ApiCall.isCancel());
+        }
+        Log.d("LOG", "Bank Detatch");
 
-
+        super.onDetach();
     }
 }

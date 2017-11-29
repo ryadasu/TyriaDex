@@ -1,0 +1,10 @@
++Name getWallet
+
++Request
+GET https://api.guildwars2.com/v2/account/wallet?access_token=
++Headers
++Body
+
++Response
++Body
+[{"id":1,"value":7460497},{"id":2,"value":808452},{"id":3,"value":193},{"id":4,"value":0},{"id":5,"value":138},{"id":7,"value":30},{"id":11,"value":324},{"id":13,"value":143},{"id":15,"value":213},{"id":18,"value":67},{"id":19,"value":1765},{"id":20,"value":412},{"id":22,"value":1287},{"id":23,"value":804},{"id":24,"value":2},{"id":25,"value":52},{"id":27,"value":1738},{"id":32,"value":6502},{"id":34,"value":307},{"id":35,"value":3}]

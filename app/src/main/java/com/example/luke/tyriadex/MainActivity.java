@@ -26,18 +26,17 @@ public class MainActivity extends AppCompatActivity
 
     private static String API_KEY = null;
     private static Fragment fragment;
+    private Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-//        Context context = getApplication(); //use this style of shared preferences if there's more than one activity
-//        SharedPreferences sharedPref = context.getSharedPreferences("com.example.luke.tyriadex.pref", Context.MODE_PRIVATE);
         setApiKey(sharedPref.getString("newApiKey", null));
         Log.d("LOG", "Main load api key: " + getApiKey());
 
         setContentView(R.layout.activity_main);
-        Toolbar toolbar = findViewById(R.id.toolbar);
+        toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
         if (getApiKey() != null) {
@@ -67,8 +66,6 @@ public class MainActivity extends AppCompatActivity
     @Override
     protected void onStop() {
         SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
-//        Context context = getApplication(); //use this style of shared preferences if there's more than one activity
-//        SharedPreferences sharedPref = context.getSharedPreferences("com.example.luke.tyriadex.pref", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedPref.edit();
         editor.putString("newApiKey", getApiKey());
         editor.apply();
@@ -109,10 +106,14 @@ public class MainActivity extends AppCompatActivity
                 newFragment.setArguments(args);
                 break;
             case R.id.nav_tp:
-                //
+                newFragment = new TradingFragment();
+                args.putString("key", getApiKey());
+                newFragment.setArguments(args);
                 break;
-            case R.id.nav_dailies:
-                //
+            case R.id.nav_wallet:
+                newFragment = new WalletFragment();
+                args.putString("key", getApiKey());
+                newFragment.setArguments(args);
                 break;
             case R.id.nav_api:
                 newFragment = new ApiFragment();
@@ -139,8 +140,15 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     public void onDataPass(String data) {
-        Log.d("LOG","Main api key: " + data);
+        Log.d("LOG","Main received new api key: " + data);
         setApiKey(data);
+
+        SharedPreferences sharedPref = getPreferences(Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedPref.edit();
+        editor.putString("newApiKey", getApiKey());
+        editor.apply();
+
+        Log.d("LOG", "Main saving api key: " + getApiKey());
     }
 
     public void setApiKey(String newApiKey) {
@@ -149,5 +157,9 @@ public class MainActivity extends AppCompatActivity
 
     public String getApiKey() {
         return API_KEY;
+    }
+
+    public void setToolbarTitle(String title) {
+        toolbar.setTitle(title);
     }
 }

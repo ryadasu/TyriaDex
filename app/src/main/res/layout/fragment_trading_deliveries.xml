@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+    android:id="@+id/tv_trading_delivery_label"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="4dp"
+    android:layout_marginLeft="8dp"
+    style="@style/TextSubheading"
+    android:text="@string/trading_delivery"
+    />
+    <TextView
+    android:id="@+id/tv_trading_delivery_gold"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_marginLeft="8dp"
+    android:layout_marginTop="5dp"
+    android:maxWidth="180dp"
+    android:text="@string/trading_delivery_gold"
+    />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_trading_deliveries"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:scrollbars="vertical"/>
+
+</LinearLayout>

@@ -1,0 +1,10 @@
++Name getAccount
+
++Request
+GET https://api.guildwars2.com/v2/account?access_token=
++Headers
++Body
+
++Response
++Body
+{"id":"50270AFA-7C68-E111-809D-78E7D1936EF0","name":"Ryadasu.7425","age":4682940,"world":1014,"guilds":["D78B8CC9-7307-457F-A250-AD5B17BB857B"],"guild_leader":["D78B8CC9-7307-457F-A250-AD5B17BB857B"],"created":"2012-04-16T06:59:00Z","access":["GuildWars2","HeartOfThorns","PathOfFire"],"commander":false,"fractal_level":5,"daily_ap":2212,"monthly_ap":410,"wvw_rank":10}

@@ -15,6 +15,7 @@ import android.widget.Toast;
 
 import com.magnet.android.mms.exception.SchemaException;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 import java.util.stream.Collectors;
@@ -74,7 +75,7 @@ public class CharacterFragment extends Fragment {
         }
 
         public List<String> doInBackground(String... params) {
-            List<String> result = null;
+            List<String> result = new ArrayList<String>();
             try {
                 result = ApiCall.getCharacterNames(params[0]);
             } catch (SchemaException e) {
@@ -113,6 +114,7 @@ public class CharacterFragment extends Fragment {
         Log.d("LOG", "Character Fragment load api key: " + apiKey);
 
         ApiCall.update(getContext());
+        ((MainActivity) getActivity()).setToolbarTitle("TyriaDex: Characters");
 
         TextView tvNames = rootView.findViewById(R.id.tv_characters);
         TextView tvDetails = rootView.findViewById(R.id.tv_char_detail);

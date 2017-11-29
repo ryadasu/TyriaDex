@@ -2,24 +2,30 @@
     <string name="app_name">TyriaDex</string>
     <string name="creator">made by Ryadasu</string>
 
+    <string name="loading_bank">Loading Bank...</string>
+
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="action_settings">Settings</string>
 
+    <string name="current_account">Current Account:</string>
     <string name="enter_api">Please enter your API key</string>
     <string name="save">Save</string>
     <string name="clear">Clear</string>
+    <string name="none">None</string>
 
     <string name="nav_characters">Characters</string>
-    <string name="nav_bank">Bank and Wallet</string>
-    <string name="nav_dailies">Dailies</string>
+    <string name="nav_bank">Bank</string>
+    <string name="nav_wallet">Wallet</string>
     <string name="nav_tp">Trading Post</string>
     <string name="nav_api">API Key</string>
     <string name="nav_settings">Settings</string>
 
     <string name="load_chars">Loading Characters...</string>
 
+    <string name="trading_delivery">To Be Picked Up:</string>
+    <string name="trading_delivery_gold">00g 00s 00c</string>
     <string name="trading_current_orders">Current Orders:</string>
     <string name="trading_current_sales">Currently Selling:</string>
     <string name="trading_past_buys">Recent Purchases:</string>
