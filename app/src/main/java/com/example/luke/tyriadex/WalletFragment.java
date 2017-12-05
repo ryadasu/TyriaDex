@@ -47,7 +47,9 @@ public class WalletFragment extends Fragment {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-            loading.setVisibility(View.VISIBLE);
+            if (loading != null) {
+                loading.setVisibility(View.VISIBLE);
+            }
         }
 
         public List<WalletResult> doInBackground(String... params) {

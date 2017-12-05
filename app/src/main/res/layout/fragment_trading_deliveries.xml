@@ -3,29 +3,68 @@
     android:orientation="vertical" android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <TextView
-    android:id="@+id/tv_trading_delivery_label"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginTop="4dp"
-    android:layout_marginLeft="8dp"
-    style="@style/TextSubheading"
-    android:text="@string/trading_delivery"
-    />
-    <TextView
-    android:id="@+id/tv_trading_delivery_gold"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:layout_marginLeft="8dp"
-    android:layout_marginTop="5dp"
-    android:maxWidth="180dp"
-    android:text="@string/trading_delivery_gold"
-    />
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackground"
+        android:clickable="true"
+        android:focusable="true"
+        android:orientation="vertical"
+        android:paddingBottom="10dp"
+        android:paddingLeft="@dimen/activity_horizontal_margin"
+        android:paddingRight="@dimen/activity_horizontal_margin"
+        android:paddingTop="10dp">
+
+        <ImageView
+            android:id="@+id/iv_pickup_list_icon"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_alignParentLeft="true"
+            />
+
+        <TextView
+            android:id="@+id/tv_pickup_list_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/iv_pickup_list_icon"
+            android:layout_toRightOf="@+id/iv_pickup_list_icon"
+            android:textColor="@color/primaryTextColor"
+            android:padding="4dp"
+            android:layout_margin="4dp"
+            android:textSize="16sp"
+            />
+
+        <TextView
+            android:id="@+id/tv_pickup_list_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_toEndOf="@+id/iv_pickup_list_icon"
+            android:layout_toRightOf="@+id/iv_pickup_list_icon"
+            android:layout_below="@id/tv_pickup_list_name"
+            android:padding="4dp"
+            android:layout_marginLeft="4dp"
+            android:textSize="12sp"
+            />
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ProgressBar
+        android:id="@+id/pb_trading_deliveries_loading"
+        android:layout_height="42dp"
+        android:layout_width="42dp"
+        android:layout_gravity="center"
+        android:visibility="invisible" />
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_trading_deliveries"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:scrollbars="vertical"/>
+
+    </FrameLayout>
+
 
 </LinearLayout>

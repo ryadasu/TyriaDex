@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, ApiFragment.OnDataPass {
 
     private static String API_KEY = null;
-    private static Fragment fragment;
+    private static Fragment fragment = null;
     private Toolbar toolbar;
 
     @Override
@@ -35,22 +35,29 @@ public class MainActivity extends AppCompatActivity
         setApiKey(sharedPref.getString("newApiKey", null));
         Log.d("LOG", "Main load api key: " + getApiKey());
 
+        if (savedInstanceState != null) {
+            //Restore the fragment's instance
+            fragment = getSupportFragmentManager().getFragment(savedInstanceState, "currentFragment");
+        }
+
         setContentView(R.layout.activity_main);
         toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        if (getApiKey() != null) {
-            fragment = new CharacterFragment();
-            Bundle args = new Bundle();
-            args.putString("key", getApiKey());
-            fragment.setArguments(args);
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "character").commit();
-        }
-        else {
-            fragment = new ApiFragment();
-            FragmentManager fragmentManager = getSupportFragmentManager();
-            fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "api").commit();
+        if (fragment == null) {
+            if (getApiKey() != null) {
+                fragment = new CharacterFragment();
+                Bundle args = new Bundle();
+                args.putString("key", getApiKey());
+                fragment.setArguments(args);
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "character").commit();
+            }
+            else {
+                fragment = new ApiFragment();
+                FragmentManager fragmentManager = getSupportFragmentManager();
+                fragmentManager.beginTransaction().replace(R.id.content_frame, fragment, "api").commit();
+            }
         }
 
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
@@ -128,6 +135,7 @@ public class MainActivity extends AppCompatActivity
         if (newFragment != null) {
             FragmentManager fragmentManager = getSupportFragmentManager();
             fragmentManager.beginTransaction().replace(R.id.content_frame, newFragment).commit();
+            fragment = newFragment;
         }
         else {
             //error
@@ -161,5 +169,13 @@ public class MainActivity extends AppCompatActivity
 
     public void setToolbarTitle(String title) {
         toolbar.setTitle(title);
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+
+        getSupportFragmentManager().putFragment(outState, "currentFragment", fragment);
+
     }
 }

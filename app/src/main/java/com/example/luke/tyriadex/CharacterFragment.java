@@ -83,7 +83,7 @@ public class CharacterFragment extends Fragment {
             }
 
             if (result != null) {
-                String s = result.get(1);
+                String s = result.get(2);
                 CharacterDetailsAsyncCall async = new CharacterDetailsAsyncCall(tvD);
                 Log.d("LOG", s);
                 async.execute(s, apiKey);

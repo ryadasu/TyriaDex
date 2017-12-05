@@ -5,14 +5,24 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.DefaultItemAnimator;
+import android.support.v7.widget.DividerItemDecoration;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.luke.tyriadex.model.beans.BankResult;
+import com.example.luke.tyriadex.model.beans.WalletResult;
 import com.magnet.android.mms.exception.SchemaException;
+
+import java.util.List;
 
 /**
  * Created by luke on 22/11/17.
@@ -22,27 +32,50 @@ public class BankFragment extends Fragment {
 
     String apiKey = null;
     BankAsyncCall async = null;
+    RecyclerView bankRecyclerView;
+    BankAdapter mAdapter;
+    ProgressBar loading;
 
-    private class BankAsyncCall extends AsyncTask<String, Void, String> {
+    private class BankAsyncCall extends AsyncTask<String, Void, List<BankResult>> {
 
-        TextView tvB;
+        View rootView;
+        Boolean cancelled = false;
 
-        public BankAsyncCall(TextView tvBank) {
-            tvB = tvBank;
+        public BankAsyncCall(View view) {
+            rootView = view;
         }
 
-        public String doInBackground(String... params) {
-            String result = null;
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            if (loading != null) {
+                loading.setVisibility(View.VISIBLE);
+            }
+        }
+
+        public List<BankResult> doInBackground(String... params) {
+            cancelled = false;
+            List<BankResult> result = null;
             try {
-                result = ApiCall.getBank(params[0]);
+                result = ApiCall.getBankObject(params[0]);
             } catch (SchemaException e) {
                 e.printStackTrace();
             }
             return result;
         }
 
-        public void onPostExecute(String result) {
-            tvB.setText(result);
+        @Override
+        protected void onCancelled() {
+            cancelled = true;
+            super.onCancelled();
+        }
+
+        public void onPostExecute(List<BankResult> result) {
+            if (!cancelled) {
+                loading.setVisibility(View.INVISIBLE);
+                mAdapter.setmDataSource(result);
+                mAdapter.notifyDataSetChanged();
+            }
         }
     }
 
@@ -54,18 +87,27 @@ public class BankFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_bank, container, false);
+        View rootView = inflater.inflate(R.layout.fragment_wallet, container, false);
         Bundle args = getArguments();
         if (args != null) {
             apiKey = args.getString("key");
         }
         Log.d("LOG", "Bank Fragment load api key: " + apiKey);
         ApiCall.update(getContext());
-        ((MainActivity) getActivity()).setToolbarTitle("TyriaDex: Bank");
+        ((MainActivity) getActivity()).setToolbarTitle("Bank");
 
+        loading = rootView.findViewById(R.id.pb_wallet_loading);
 
-        TextView tvBank = rootView.findViewById(R.id.tv_bank);
-        async = new BankAsyncCall(tvBank);
+        bankRecyclerView = rootView.findViewById(R.id.recycler_wallet);
+        mAdapter = new BankAdapter();
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getContext());
+        bankRecyclerView.setHasFixedSize(true);
+        bankRecyclerView.setLayoutManager(mLayoutManager);
+        bankRecyclerView.setItemAnimator(new DefaultItemAnimator());
+        bankRecyclerView.addItemDecoration(new DividerItemDecoration(getContext(), LinearLayoutManager.VERTICAL));
+        bankRecyclerView.setAdapter(mAdapter);
+
+        async = new BankAsyncCall(rootView);
         async.execute(apiKey);
 
         return rootView;
@@ -73,12 +115,9 @@ public class BankFragment extends Fragment {
 
     @Override
     public void onDetach() {
-        //TODO: cancel api call here
         if (async != null) {
-            ApiCall.setCancel(true);
-            Log.d("LOG", "Api Cancel: " + ApiCall.isCancel());
+            async.cancel(true);
         }
-        Log.d("LOG", "Bank Detatch");
 
         super.onDetach();
     }

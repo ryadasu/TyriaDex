@@ -17,6 +17,7 @@ import com.example.luke.tyriadex.model.beans.Item;
 import com.example.luke.tyriadex.model.beans.ItemByIdResult;
 import com.example.luke.tyriadex.model.beans.PastBuysResult;
 import com.example.luke.tyriadex.model.beans.PastSalesResult;
+import com.example.luke.tyriadex.model.beans.TradingResult;
 import com.example.luke.tyriadex.model.beans.WalletResult;
 import com.magnet.android.mms.MagnetMobileClient;
 import com.magnet.android.mms.async.Call;
@@ -76,7 +77,7 @@ public class ApiCall {
             }
             else {
                 for (Item item : result.getItems()) {
-                    item.setItemByIdResult(getItemObjectById(String.valueOf(item.getId())));
+                    item.setItem(getItemObjectById(String.valueOf(item.getId())));
                 }
             }
         }
@@ -145,6 +146,38 @@ public class ApiCall {
         return deliveries;
     }
 
+    public static List<TradingResult> getCurrentBuysObject(String key) throws SchemaException {
+        MagnetMobileClient magnetClient = MagnetMobileClient.getInstance(c);
+        controllerFactory = new GW2APIFactory(magnetClient);
+        api = controllerFactory.obtainInstance();
+
+        Call<List<CurrentBuysResult>> callObject = api.getCurrentBuys(key, null);
+        Log.d("LOG", callObject.toString());
+        List<CurrentBuysResult> result = null;
+        try {
+            result = callObject.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        List<TradingResult> tResult = new ArrayList<TradingResult>();
+
+        if (result != null) {
+            if (result.isEmpty()) {
+                //
+            }
+            else {
+                for (TradingResult t : result) {
+                    t.setItem(getItemObjectById(String.valueOf(t.getItem_id())));
+                    tResult.add(t);
+                }
+            }
+        }
+
+        return tResult;
+    }
+
     public static String getCurrentBuys(String key) throws SchemaException {
         MagnetMobileClient magnetClient = MagnetMobileClient.getInstance(c);
         controllerFactory = new GW2APIFactory(magnetClient);
@@ -193,6 +226,39 @@ public class ApiCall {
         }
     }
 
+
+    public static List<TradingResult> getCurrentSalesObject(String key) throws SchemaException {
+        MagnetMobileClient magnetClient = MagnetMobileClient.getInstance(c);
+        controllerFactory = new GW2APIFactory(magnetClient);
+        api = controllerFactory.obtainInstance();
+
+        Call<List<CurrentSalesResult>> callObject = api.getCurrentSales(key, null);
+        Log.d("LOG", callObject.toString());
+        List<CurrentSalesResult> result = null;
+        try {
+            result = callObject.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        List<TradingResult> tResult = new ArrayList<TradingResult>();
+
+        if (result != null) {
+            if (result.isEmpty()) {
+                //
+            }
+            else {
+                for (TradingResult t : result) {
+                    t.setItem(getItemObjectById(String.valueOf(t.getItem_id())));
+                    tResult.add(t);
+                }
+            }
+        }
+
+        return tResult;
+    }
+
     public static String getCurrentSales(String key) throws SchemaException {
         MagnetMobileClient magnetClient = MagnetMobileClient.getInstance(c);
         controllerFactory = new GW2APIFactory(magnetClient);
@@ -239,6 +305,38 @@ public class ApiCall {
         }
     }
 
+    public static List<TradingResult> getPastBuysObject(String key) throws SchemaException {
+        MagnetMobileClient magnetClient = MagnetMobileClient.getInstance(c);
+        controllerFactory = new GW2APIFactory(magnetClient);
+        api = controllerFactory.obtainInstance();
+
+        Call<List<PastBuysResult>> callObject = api.getPastBuys(key, null);
+        Log.d("LOG", callObject.toString());
+        List<PastBuysResult> result = null;
+        try {
+            result = callObject.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        List<TradingResult> tResult = new ArrayList<TradingResult>();
+
+        if (result != null) {
+            if (result.isEmpty()) {
+                //
+            }
+            else {
+                for (TradingResult t : result) {
+                    t.setItem(getItemObjectById(String.valueOf(t.getItem_id())));
+                    tResult.add(t);
+                }
+            }
+        }
+
+        return tResult;
+    }
+
     public static String getPastBuys(String key) throws SchemaException {
         MagnetMobileClient magnetClient = MagnetMobileClient.getInstance(c);
         controllerFactory = new GW2APIFactory(magnetClient);
@@ -282,6 +380,38 @@ public class ApiCall {
         }
     }
 
+    public static List<TradingResult> getPastSalesObject(String key) throws SchemaException {
+        MagnetMobileClient magnetClient = MagnetMobileClient.getInstance(c);
+        controllerFactory = new GW2APIFactory(magnetClient);
+        api = controllerFactory.obtainInstance();
+
+        Call<List<PastSalesResult>> callObject = api.getPastSales(key, null);
+        Log.d("LOG", callObject.toString());
+        List<PastSalesResult> result = null;
+        try {
+            result = callObject.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+        List<TradingResult> tResult = new ArrayList<TradingResult>();
+
+        if (result != null) {
+            if (result.isEmpty()) {
+                //
+            }
+            else {
+                for (TradingResult t : result) {
+                    t.setItem(getItemObjectById(String.valueOf(t.getItem_id())));
+                    tResult.add(t);
+                }
+            }
+        }
+
+        return tResult;
+    }
+
     public static String getPastSales(String key) throws SchemaException {
         MagnetMobileClient magnetClient = MagnetMobileClient.getInstance(c);
         controllerFactory = new GW2APIFactory(magnetClient);
@@ -323,6 +453,43 @@ public class ApiCall {
         } else {
             return "Error retrieving current buy orders";
         }
+    }
+
+    public static List<BankResult> getBankObject(String key) throws SchemaException {
+        MagnetMobileClient magnetClient = MagnetMobileClient.getInstance(c);
+        controllerFactory = new GW2APIFactory(magnetClient);
+        api = controllerFactory.obtainInstance();
+
+        Call<List<BankResult>> callObject = api.getBank(key, null);
+        Log.d("LOG", callObject.toString());
+        List<BankResult> result = null;
+        try {
+            result = callObject.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        if (result != null) {
+            if (result.isEmpty()) {
+                //
+            }
+            else {
+                for (int i = 0; i < result.size(); i++) {
+                    if (result.get(i) == null) {
+                        BankResult b = new BankResult();
+                        b.setId(0);
+                        result.set(i, b);
+                    }
+                    else {
+                        result.get(i).setItem(getItemObjectById(String.valueOf(result.get(i).getId())));
+                    }
+                }
+            }
+        }
+
+        return result;
     }
 
     public static String getBank(String key) throws SchemaException {

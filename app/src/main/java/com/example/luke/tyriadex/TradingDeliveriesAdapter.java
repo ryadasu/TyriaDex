@@ -23,6 +23,10 @@ import java.util.Locale;
 public class TradingDeliveriesAdapter extends RecyclerView.Adapter<TradingDeliveriesAdapter.ViewHolder> {
     private List<Item> mDataSource;
 
+    public TradingDeliveriesAdapter() {
+        //
+    }
+
     public TradingDeliveriesAdapter(List<Item> items) {
         mDataSource = items;
     }
@@ -36,7 +40,7 @@ public class TradingDeliveriesAdapter extends RecyclerView.Adapter<TradingDelive
     @Override
     public int getItemCount() {
         if (mDataSource == null) {
-            return 10;
+            return 0;
         }
         else {
             return mDataSource.size();
@@ -47,13 +51,13 @@ public class TradingDeliveriesAdapter extends RecyclerView.Adapter<TradingDelive
     public void onBindViewHolder(ViewHolder holder, int position) {
         Item item = mDataSource.get(position);
         Picasso.with(holder.getContext())
-                .load(item.getItemByIdResult().getIcon())
+                .load(item.getItem().getIcon())
                 .placeholder(R.drawable.currency_placeholder)
                 .fit()
                 .into(holder.itemIcon);
 
         String itemQuantityAndName = "";
-        itemQuantityAndName += (String.valueOf(item.getCount()) + "x " + item.getItemByIdResult().getName());
+        itemQuantityAndName += (String.valueOf(item.getCount()) + "x " + item.getItem().getName());
 
         holder.itemName.setText(itemQuantityAndName);
     }
@@ -75,5 +79,13 @@ public class TradingDeliveriesAdapter extends RecyclerView.Adapter<TradingDelive
         public Context getContext() {
             return context;
         }
+    }
+
+    public List<Item> getmDataSource() {
+        return mDataSource;
+    }
+
+    public void setmDataSource(List<Item> mDataSource) {
+        this.mDataSource = mDataSource;
     }
 }

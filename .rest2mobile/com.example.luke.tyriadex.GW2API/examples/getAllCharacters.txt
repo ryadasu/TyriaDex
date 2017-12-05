@@ -1,0 +1,2277 @@
++Name getAllCharacters
+
++Request
+GET https://api.guildwars2.com/v2/characters?page=0&access_token=
++Headers
++Body
+
++Response
++Body
+[
+{
+"name": "Raekar Wolfpaw",
+"race": "Norn",
+"gender": "Male",
+"flags": [],
+"profession": "Ranger",
+"level": 80,
+"guild": "D78B8CC9-7307-457F-A250-AD5B17BB857B",
+"age": 136087,
+"created": "2015-07-06T12:21:00Z",
+"deaths": 16,
+"crafting": [
+{
+"discipline": "Huntsman",
+"rating": 3,
+"active": true
+}
+],
+"title": 209,
+"backstory": [
+"25-119",
+"26-123",
+"183-181",
+"27-125",
+"7-53"
+],
+"wvw_abilities": [
+{
+"id": 25,
+"rank": 1
+}
+],
+"specializations": {
+"pve": [
+{
+"id": 33,
+"traits": [
+1099,
+1101,
+1701
+]
+},
+{
+"id": 30,
+"traits": [
+1069,
+1846,
+1912
+]
+},
+{
+"id": 55,
+"traits": [
+2071,
+2161,
+2128
+]
+}
+]
+},
+"skills": {
+"pve": {
+"heal": 44948,
+"utilities": [
+40498,
+45970,
+45789
+],
+"elite": 45717,
+"pets": {
+"terrestrial": [
+51,
+45
+],
+"aquatic": [
+45,
+19
+]
+}
+}
+},
+"equipment": [
+{
+"id": 64047,
+"slot": "HelmAquatic",
+"upgrades": [
+24739
+],
+"binding": "Character",
+"bound_to": "Raekar Wolfpaw"
+},
+{
+"id": 39151,
+"slot": "Backpack",
+"upgrades": [
+24498
+],
+"binding": "Character",
+"bound_to": "Raekar Wolfpaw"
+},
+{
+"id": 183,
+"slot": "Coat",
+"upgrades": [
+24830
+],
+"skin": 703,
+"binding": "Character",
+"bound_to": "Raekar Wolfpaw"
+},
+{
+"id": 70719,
+"slot": "Boots",
+"upgrades": [
+24830
+],
+"stats": {
+"id": 161,
+"attributes": {
+"Power": 45,
+"Precision": 32,
+"CritDamage": 32
+}
+},
+"binding": "Character",
+"bound_to": "Raekar Wolfpaw"
+},
+{
+"id": 76182,
+"slot": "Gloves",
+"upgrades": [
+24830
+],
+"stats": {
+"id": 161,
+"attributes": {
+"Power": 45,
+"Precision": 32,
+"CritDamage": 32
+}
+},
+"binding": "Character",
+"bound_to": "Raekar Wolfpaw"
+},
+{
+"id": 17932,
+"slot": "Helm",
+"upgrades": [
+24830
+],
+"binding": "Character",
+"bound_to": "Raekar Wolfpaw"
+},
+{
+"id": 75368,
+"slot": "Leggings",
+"upgrades": [
+24830
+],
+"stats": {
+"id": 161,
+"attributes": {
+"Power": 90,
+"Precision": 64,
+"CritDamage": 64
+}
+},
+"binding": "Character",
+"bound_to": "Raekar Wolfpaw"
+},
+{
+"id": 71759,
+"slot": "Shoulders",
+"upgrades": [
+24830
+],
+"stats": {
+"id": 161,
+"attributes": {
+"Power": 45,
+"Precision": 32,
+"CritDamage": 32
+}
+},
+"binding": "Character",
+"bound_to": "Raekar Wolfpaw"
+},
+{
+"id": 76355,
+"slot": "Accessory1",
+"upgrades": [
+24544
+],
+"binding": "Account"
+},
+{
+"id": 76474,
+"slot": "Accessory2",
+"upgrades": [
+24544
+],
+"binding": "Account"
+},
+{
+"id": 37086,
+"slot": "Ring1",
+"binding": "Account"
+},
+{
+"id": 39604,
+"slot": "Ring2",
+"binding": "Account"
+},
+{
+"id": 64141,
+"slot": "Amulet",
+"upgrades": [
+24529
+],
+"binding": "Character",
+"bound_to": "Raekar Wolfpaw"
+},
+{
+"id": 28661,
+"slot": "WeaponAquaticA"
+},
+{
+"id": 28257,
+"slot": "WeaponAquaticB"
+},
+{
+"id": 83037,
+"slot": "WeaponA1",
+"upgrades": [
+24548
+],
+"stats": {
+"id": 1153,
+"attributes": {
+"Power": 102,
+"Precision": 56,
+"ConditionDamage": 102,
+"ConditionDuration": 56
+}
+},
+"binding": "Character",
+"bound_to": "Raekar Wolfpaw"
+},
+{
+"id": 71685,
+"slot": "WeaponA2",
+"upgrades": [
+24624
+],
+"skin": 3847,
+"stats": {
+"id": 1067,
+"attributes": {
+"Power": 85,
+"Precision": 85,
+"ConditionDamage": 120
+}
+},
+"binding": "Character",
+"bound_to": "Raekar Wolfpaw"
+},
+{
+"id": 70581,
+"slot": "WeaponB1",
+"upgrades": [
+24575,
+24548
+],
+"skin": 4571,
+"binding": "Character",
+"bound_to": "Raekar Wolfpaw"
+},
+{
+"id": 22997,
+"slot": "Sickle",
+"binding": "Account",
+"charges": 48
+},
+{
+"id": 23000,
+"slot": "Axe",
+"binding": "Account",
+"charges": 66
+},
+{
+"id": 23001,
+"slot": "Pick",
+"binding": "Account",
+"charges": 76
+}
+],
+"recipes": [
+3,
+16,
+23,
+29,
+118,
+119,
+120,
+4458,
+4461,
+4464,
+4466,
+4467,
+4470,
+4474,
+4476,
+4486,
+4765,
+4766,
+4767,
+5070,
+5071,
+5072,
+5073,
+5074,
+5075,
+9514,
+9515,
+10724,
+10950
+],
+"training": [
+{
+"id": 77,
+"spent": 13,
+"done": true
+},
+{
+"id": 90,
+"spent": 15,
+"done": true
+},
+{
+"id": 48,
+"spent": 24,
+"done": true
+},
+{
+"id": 41,
+"spent": 24,
+"done": true
+},
+{
+"id": 82,
+"spent": 22,
+"done": true
+},
+{
+"id": 83,
+"spent": 60,
+"done": true
+},
+{
+"id": 105,
+"spent": 60,
+"done": true
+},
+{
+"id": 65,
+"spent": 60,
+"done": true
+},
+{
+"id": 101,
+"spent": 60,
+"done": true
+},
+{
+"id": 46,
+"spent": 60,
+"done": true
+},
+{
+"id": 407,
+"spent": 250,
+"done": true
+}
+],
+"bags": [
+{
+"id": 9448,
+"size": 15,
+"inventory": [
+{
+"id": 23045,
+"count": 1,
+"charges": 239,
+"binding": "Account"
+},
+{
+"id": 71647,
+"count": 1,
+"binding": "Account",
+"stats": {
+"id": 161,
+"attributes": {
+"Power": 239,
+"Precision": 171,
+"CritDamage": 171
+}
+}
+},
+{
+"id": 84638,
+"count": 1,
+"upgrades": [
+83964
+],
+"binding": "Account"
+},
+{
+"id": 66961,
+"count": 1,
+"binding": "Character",
+"bound_to": "Raekar Wolfpaw"
+},
+{
+"id": 12459,
+"count": 10
+},
+{
+"id": 67368,
+"count": 14
+},
+{
+"id": 20018,
+"count": 3,
+"binding": "Account"
+},
+{
+"id": 19984,
+"count": 3,
+"binding": "Account"
+},
+{
+"id": 67280,
+"count": 3,
+"binding": "Account"
+},
+{
+"id": 19996,
+"count": 3,
+"binding": "Account"
+},
+{
+"id": 20017,
+"count": 3,
+"binding": "Account"
+},
+{
+"id": 70025,
+"count": 1,
+"binding": "Account"
+},
+{
+"id": 23001,
+"count": 1,
+"charges": 100,
+"binding": "Account"
+},
+{
+"id": 23000,
+"count": 1,
+"charges": 100,
+"binding": "Account"
+},
+{
+"id": 23001,
+"count": 1,
+"charges": 100,
+"binding": "Account"
+}
+]
+},
+{
+"id": 8932,
+"size": 20,
+"inventory": [
+{
+"id": 19554,
+"count": 2,
+"binding": "Character",
+"bound_to": "Raekar Wolfpaw"
+},
+{
+"id": 45176,
+"count": 1,
+"binding": "Account"
+},
+{
+"id": 24777,
+"count": 1
+},
+{
+"id": 45175,
+"count": 8,
+"binding": "Account"
+},
+{
+"id": 24763,
+"count": 1
+},
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null
+]
+},
+{
+"id": 9423,
+"size": 15,
+"inventory": [
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null
+]
+},
+{
+"id": 9423,
+"size": 15,
+"inventory": [
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null
+]
+},
+{
+"id": 9423,
+"size": 15,
+"inventory": [
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null
+]
+}
+]
+},
+{
+"name": "Taleisin Stormcrow",
+"race": "Sylvari",
+"gender": "Male",
+"flags": [],
+"profession": "Elementalist",
+"level": 80,
+"guild": "D78B8CC9-7307-457F-A250-AD5B17BB857B",
+"age": 199521,
+"created": "2015-04-17T06:15:00Z",
+"deaths": 21,
+"crafting": [],
+"title": 279,
+"backstory": [
+"7-54",
+"186-162",
+"32-143",
+"30-133",
+"31-140"
+],
+"wvw_abilities": [],
+"specializations": {
+"pve": [
+{
+"id": 31,
+"traits": [
+335,
+334,
+1675
+]
+},
+{
+"id": 37,
+"traits": [
+253,
+257,
+263
+]
+},
+{
+"id": 56,
+"traits": [
+2115,
+2180,
+2131
+]
+}
+]
+},
+"skills": {
+"pve": {
+"heal": 21656,
+"utilities": [
+5638,
+5641,
+44926
+],
+"elite": 5516
+}
+},
+"equipment": [
+{
+"id": 63598,
+"slot": "HelmAquatic",
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+},
+{
+"id": 39151,
+"slot": "Backpack",
+"upgrades": [
+24544
+],
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+},
+{
+"id": 71738,
+"slot": "Coat",
+"upgrades": [
+24747
+],
+"stats": {
+"id": 161,
+"attributes": {
+"Power": 134,
+"Precision": 96,
+"CritDamage": 96
+}
+},
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+},
+{
+"id": 75646,
+"slot": "Boots",
+"upgrades": [
+24747
+],
+"stats": {
+"id": 161,
+"attributes": {
+"Power": 45,
+"Precision": 32,
+"CritDamage": 32
+}
+},
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+},
+{
+"id": 71149,
+"slot": "Gloves",
+"upgrades": [
+24747
+],
+"stats": {
+"id": 161,
+"attributes": {
+"Power": 45,
+"Precision": 32,
+"CritDamage": 32
+}
+},
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+},
+{
+"id": 17950,
+"slot": "Helm",
+"upgrades": [
+24747
+],
+"skin": 1000,
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+},
+{
+"id": 70899,
+"slot": "Leggings",
+"upgrades": [
+24747
+],
+"stats": {
+"id": 161,
+"attributes": {
+"Power": 90,
+"Precision": 64,
+"CritDamage": 64
+}
+},
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+},
+{
+"id": 73202,
+"slot": "Shoulders",
+"upgrades": [
+24747
+],
+"stats": {
+"id": 161,
+"attributes": {
+"Power": 45,
+"Precision": 32,
+"CritDamage": 32
+}
+},
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+},
+{
+"id": 67210,
+"slot": "Accessory1",
+"upgrades": [
+24498
+],
+"binding": "Account"
+},
+{
+"id": 70430,
+"slot": "Accessory2",
+"upgrades": [
+24498
+],
+"binding": "Account"
+},
+{
+"id": 37086,
+"slot": "Ring1",
+"binding": "Account"
+},
+{
+"id": 37075,
+"slot": "Ring2",
+"binding": "Account"
+},
+{
+"id": 67900,
+"slot": "Amulet",
+"binding": "Account"
+},
+{
+"id": 28444,
+"slot": "WeaponAquaticA",
+"upgrades": [
+24658
+],
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+},
+{
+"id": 84573,
+"slot": "WeaponA1",
+"upgrades": [
+24548
+],
+"stats": {
+"id": 1344,
+"attributes": {
+"Power": 102,
+"Precision": 56,
+"CritDamage": 56,
+"ConditionDamage": 102
+}
+},
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+},
+{
+"id": 67648,
+"slot": "WeaponA2",
+"upgrades": [
+24624
+],
+"skin": 3850,
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+},
+{
+"id": 22997,
+"slot": "Sickle",
+"binding": "Account",
+"charges": 34
+},
+{
+"id": 23000,
+"slot": "Axe",
+"binding": "Account",
+"charges": 55
+},
+{
+"id": 23001,
+"slot": "Pick",
+"binding": "Account",
+"charges": 96
+}
+],
+"recipes": [
+6468,
+11275
+],
+"training": [
+{
+"id": 33,
+"spent": 22,
+"done": true
+},
+{
+"id": 111,
+"spent": 24,
+"done": true
+},
+{
+"id": 115,
+"spent": 13,
+"done": true
+},
+{
+"id": 86,
+"spent": 24,
+"done": true
+},
+{
+"id": 107,
+"spent": 15,
+"done": true
+},
+{
+"id": 34,
+"spent": 60,
+"done": true
+},
+{
+"id": 69,
+"spent": 60,
+"done": true
+},
+{
+"id": 36,
+"spent": 60,
+"done": true
+},
+{
+"id": 39,
+"spent": 60,
+"done": true
+},
+{
+"id": 93,
+"spent": 60,
+"done": true
+},
+{
+"id": 31,
+"spent": 250,
+"done": true
+},
+{
+"id": 416,
+"spent": 225,
+"done": false
+}
+],
+"bags": [
+{
+"id": 9491,
+"size": 15,
+"inventory": [
+{
+"id": 23045,
+"count": 1,
+"charges": 198,
+"binding": "Account"
+},
+{
+"id": 73146,
+"count": 1,
+"upgrades": [
+76166
+],
+"binding": "Account",
+"stats": {
+"id": 753,
+"attributes": {
+"Power": 32,
+"Precision": 45,
+"CritDamage": 32
+}
+}
+},
+{
+"id": 71561,
+"count": 1,
+"upgrades": [
+24548
+],
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow",
+"stats": {
+"id": 753,
+"attributes": {
+"Power": 85,
+"Precision": 120,
+"CritDamage": 85
+}
+}
+},
+{
+"id": 71063,
+"count": 1,
+"upgrades": [
+24624,
+24548
+],
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+},
+{
+"id": 70025,
+"count": 1,
+"binding": "Account"
+},
+{
+"id": 67648,
+"count": 1,
+"upgrades": [
+24548
+],
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+},
+{
+"id": 43550,
+"count": 4
+},
+{
+"id": 84536,
+"count": 1,
+"binding": "Account"
+},
+{
+"id": 67367,
+"count": 37
+},
+{
+"id": 19996,
+"count": 4,
+"binding": "Account"
+},
+{
+"id": 67280,
+"count": 3,
+"binding": "Account"
+},
+{
+"id": 19984,
+"count": 4,
+"binding": "Account"
+},
+{
+"id": 20018,
+"count": 5,
+"binding": "Account"
+},
+{
+"id": 20017,
+"count": 3,
+"binding": "Account"
+},
+{
+"id": 66961,
+"count": 1,
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+}
+]
+},
+{
+"id": 8932,
+"size": 20,
+"inventory": [
+{
+"id": 22997,
+"count": 1,
+"charges": 50,
+"binding": "Account"
+},
+{
+"id": 23000,
+"count": 1,
+"charges": 100,
+"binding": "Account"
+},
+{
+"id": 82083,
+"count": 1,
+"binding": "Account"
+},
+null,
+{
+"id": 20000,
+"count": 1,
+"binding": "Account"
+},
+{
+"id": 84479,
+"count": 3,
+"binding": "Account"
+},
+{
+"id": 84196,
+"count": 7,
+"binding": "Account"
+},
+{
+"id": 84335,
+"count": 8,
+"binding": "Account"
+},
+{
+"id": 82400,
+"count": 21,
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+},
+{
+"id": 48714,
+"count": 1,
+"binding": "Account"
+},
+{
+"id": 83403,
+"count": 1,
+"binding": "Account"
+},
+{
+"id": 36077,
+"count": 13
+},
+{
+"id": 36074,
+"count": 24
+},
+{
+"id": 82271,
+"count": 1,
+"binding": "Account"
+},
+{
+"id": 83868,
+"count": 1,
+"binding": "Account"
+},
+{
+"id": 82178,
+"count": 1,
+"binding": "Account"
+},
+{
+"id": 82096,
+"count": 1,
+"binding": "Account"
+},
+{
+"id": 36084,
+"count": 9
+},
+{
+"id": 36080,
+"count": 9
+},
+{
+"id": 36081,
+"count": 10
+}
+]
+},
+{
+"id": 9413,
+"size": 15,
+"inventory": [
+{
+"id": 67368,
+"count": 25
+},
+{
+"id": 36061,
+"count": 4
+},
+{
+"id": 84128,
+"count": 1,
+"binding": "Account"
+},
+{
+"id": 36076,
+"count": 21
+},
+{
+"id": 67371,
+"count": 9
+},
+{
+"id": 83432,
+"count": 1,
+"binding": "Account"
+},
+{
+"id": 36060,
+"count": 9
+},
+{
+"id": 20316,
+"count": 1
+},
+{
+"id": 36038,
+"count": 13
+},
+{
+"id": 85016,
+"count": 6
+},
+{
+"id": 24620,
+"count": 1
+},
+{
+"id": 83899,
+"count": 1,
+"binding": "Account"
+},
+{
+"id": 36059,
+"count": 1
+},
+{
+"id": 83344,
+"count": 1,
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+},
+{
+"id": 82283,
+"count": 1,
+"binding": "Character",
+"bound_to": "Taleisin Stormcrow"
+}
+]
+},
+{
+"id": 8936,
+"size": 15,
+"inventory": [
+{
+"id": 82395,
+"count": 1
+},
+{
+"id": 433,
+"count": 1,
+"upgrades": [
+24766
+]
+},
+{
+"id": 82488,
+"count": 3
+},
+{
+"id": 84731,
+"count": 2
+},
+{
+"id": 68341,
+"count": 1,
+"binding": "Account"
+},
+{
+"id": 45178,
+"count": 3,
+"binding": "Account"
+},
+{
+"id": 68323,
+"count": 1,
+"binding": "Account"
+},
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null
+]
+},
+{
+"id": 9423,
+"size": 15,
+"inventory": [
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null
+]
+}
+]
+},
+{
+"name": "Lazeen",
+"race": "Asura",
+"gender": "Male",
+"flags": [],
+"profession": "Mesmer",
+"level": 80,
+"guild": "D78B8CC9-7307-457F-A250-AD5B17BB857B",
+"age": 1812355,
+"created": "2012-08-25T15:05:00Z",
+"deaths": 393,
+"crafting": [
+{
+"discipline": "Artificer",
+"rating": 81,
+"active": true
+},
+{
+"discipline": "Jeweler",
+"rating": 400,
+"active": true
+},
+{
+"discipline": "Tailor",
+"rating": 109,
+"active": false
+}
+],
+"title": 191,
+"backstory": [
+"12-75",
+"10-69",
+"188-187",
+"11-70",
+"7-53"
+],
+"wvw_abilities": [],
+"specializations": {
+"pve": [
+{
+"id": 10,
+"traits": [
+682,
+713,
+680
+]
+},
+{
+"id": 24,
+"traits": [
+721,
+722,
+2035
+]
+},
+{
+"id": 40,
+"traits": [
+1987,
+1978,
+1890
+]
+}
+]
+},
+"skills": {
+"pve": {
+"heal": 21750,
+"utilities": [
+30814,
+29526,
+10247
+],
+"elite": 30359
+}
+},
+"equipment": [
+{
+"id": 4548,
+"slot": "HelmAquatic",
+"upgrades": [
+24753
+],
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 39148,
+"slot": "Backpack",
+"upgrades": [
+24498
+],
+"skin": 2348,
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 84,
+"slot": "Coat",
+"upgrades": [
+73399
+],
+"skin": 305,
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 17341,
+"slot": "Boots",
+"upgrades": [
+73399
+],
+"skin": 312,
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 17343,
+"slot": "Gloves",
+"upgrades": [
+73399
+],
+"skin": 39,
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 2387,
+"slot": "Helm",
+"upgrades": [
+73399
+],
+"skin": 1013,
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 2539,
+"slot": "Leggings",
+"upgrades": [
+73399
+],
+"skin": 300,
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 70043,
+"slot": "Shoulders",
+"upgrades": [
+73399
+],
+"stats": {
+"id": 161,
+"attributes": {
+"Power": 45,
+"Precision": 32,
+"CritDamage": 32
+}
+},
+"binding": "Account"
+},
+{
+"id": 13459,
+"slot": "Accessory1",
+"upgrades": [
+24498
+],
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 13459,
+"slot": "Accessory2",
+"upgrades": [
+24498
+],
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 37090,
+"slot": "Ring1",
+"binding": "Account"
+},
+{
+"id": 37075,
+"slot": "Ring2",
+"binding": "Account"
+},
+{
+"id": 39304,
+"slot": "Amulet",
+"binding": "Account"
+},
+{
+"id": 34744,
+"slot": "WeaponAquaticA",
+"upgrades": [
+24558
+],
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 15542,
+"slot": "WeaponAquaticB",
+"upgrades": [
+24476
+],
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 26241,
+"slot": "WeaponA1",
+"upgrades": [
+24554
+],
+"skin": 4895,
+"stats": {
+"id": 161,
+"attributes": {
+"Power": 120,
+"Precision": 85,
+"CritDamage": 85
+}
+},
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 71097,
+"slot": "WeaponA2",
+"upgrades": [
+24618
+],
+"skin": 5311,
+"stats": {
+"id": 162,
+"attributes": {
+"Power": 120,
+"Toughness": 85,
+"Vitality": 85
+}
+},
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 46762,
+"slot": "WeaponB1",
+"upgrades": [
+24575,
+24618
+],
+"skin": 4842,
+"binding": "Account"
+},
+{
+"id": 22997,
+"slot": "Sickle",
+"binding": "Account",
+"charges": 44
+},
+{
+"id": 79465,
+"slot": "Axe",
+"binding": "Account",
+"charges": 17
+},
+{
+"id": 79581,
+"slot": "Pick",
+"binding": "Account",
+"charges": 20
+}
+],
+"recipes": [
+1,
+3,
+9,
+12,
+13,
+14,
+15,
+16,
+17,
+18,
+19,
+21,
+23,
+24,
+29,
+30,
+31,
+40,
+41,
+42,
+43,
+44,
+45,
+46,
+47,
+48,
+49,
+50,
+51,
+52,
+53,
+54,
+55,
+56,
+57,
+118,
+119,
+120,
+121,
+122,
+123,
+124,
+125,
+126,
+127,
+128,
+129,
+130,
+131,
+132,
+196,
+1978,
+2013,
+2014,
+2015,
+2016,
+2017,
+2018,
+2019,
+2020,
+2021,
+2022,
+2023,
+2024,
+2025,
+2026,
+2027,
+2028,
+2029,
+2030,
+2031,
+2032,
+2033,
+2034,
+2035,
+2036,
+2049,
+2051,
+2097,
+2099,
+2122,
+2124,
+2126,
+2129,
+2133,
+2135,
+2136,
+2137,
+2157,
+2158,
+2159,
+2160,
+2161,
+2162,
+2209,
+2212,
+2229,
+2560,
+2561,
+2562,
+2563,
+2581,
+3380,
+3381,
+3382,
+3383,
+3384,
+3385,
+3386,
+3387,
+3388,
+3389,
+3390,
+3391,
+3392,
+3394,
+3395,
+3396,
+3397,
+3398,
+3399,
+3400,
+3401,
+3402,
+3403,
+3404,
+3405,
+3406,
+3407,
+3408,
+3409,
+3410,
+3411,
+3412,
+3413,
+3414,
+3415,
+3416,
+3417,
+3418,
+3419,
+3420,
+3421,
+3422,
+3423,
+3424,
+3425,
+3426,
+3427,
+3428,
+3429,
+3430,
+3431,
+3432,
+3433,
+3434,
+3435,
+3438,
+3440,
+3441,
+3442,
+3443,
+3444,
+3445,
+3446,
+3447,
+3448,
+3449,
+3450,
+3451,
+3452,
+3453,
+3454,
+3455,
+3456,
+3457,
+3458,
+3459,
+3460,
+3461,
+3462,
+3463,
+3464,
+3465,
+3466,
+3467,
+3475,
+3476,
+3478,
+3482,
+3485,
+3496,
+3500,
+3508,
+3509,
+3511,
+3514,
+3515,
+3518,
+3519,
+3520,
+3521,
+3523,
+3525,
+3526,
+3527,
+3532,
+3533,
+3534,
+3537,
+3538,
+3543,
+3544,
+3545,
+3551,
+3554,
+3556,
+3557,
+3564,
+3565,
+3566,
+3567,
+3568,
+3569,
+3570,
+3571,
+3572,
+3573,
+3580,
+3592,
+3593,
+3596,
+3601,
+3602,
+3603,
+3604,
+3605,
+3606,
+3607,
+3619,
+3620,
+3622,
+3623,
+3624,
+3629,
+3633,
+3634,
+3635,
+3636,
+3637,
+3638,
+3643,
+3644,
+3646,
+3647,
+3648,
+3649,
+3650,
+3660,
+3662,
+3664,
+3665,
+3666,
+3671,
+3674,
+3675,
+3676,
+3678,
+3679,
+3680,
+3685,
+3686,
+3687,
+3688,
+3689,
+3690,
+3691,
+3702,
+3703,
+3704,
+3706,
+3707,
+3708,
+3709,
+3710,
+3711,
+3712,
+3713,
+3714,
+3715,
+3716,
+3717,
+3718,
+3719,
+3720,
+3721,
+3728,
+3729,
+3730,
+3731,
+3737,
+3739,
+3828,
+3829,
+3830,
+3831,
+3833,
+3835,
+3837,
+3846,
+3851,
+3854,
+3857,
+3859,
+3860,
+3881,
+3882,
+3883,
+3884,
+3885,
+3886,
+3887,
+3888,
+3905,
+3908,
+3909,
+3910,
+3915,
+3916,
+3983,
+3986,
+3987,
+3988,
+3992,
+3993,
+4061,
+4062,
+4064,
+4065,
+4139,
+4140,
+4141,
+4142,
+4143,
+4144,
+4146,
+4148,
+4310,
+4311,
+4312,
+4313,
+6499,
+6518,
+6745,
+6746,
+6749,
+7002,
+7278,
+7281,
+7310,
+7339,
+7340,
+7341,
+8391,
+9274,
+9275,
+9276,
+9277,
+9278,
+9279,
+9280,
+9281,
+9282,
+9283,
+9284,
+9285,
+9286,
+9466,
+9471,
+9472,
+9473,
+9664,
+9814,
+9953,
+10297,
+10370,
+10546,
+10950,
+11139,
+11285,
+11481,
+11628,
+12053
+],
+"training": [
+{
+"id": 98,
+"spent": 24,
+"done": true
+},
+{
+"id": 35,
+"spent": 15,
+"done": true
+},
+{
+"id": 102,
+"spent": 24,
+"done": true
+},
+{
+"id": 73,
+"spent": 22,
+"done": true
+},
+{
+"id": 40,
+"spent": 13,
+"done": true
+},
+{
+"id": 56,
+"spent": 60,
+"done": true
+},
+{
+"id": 88,
+"spent": 60,
+"done": true
+},
+{
+"id": 47,
+"spent": 60,
+"done": true
+},
+{
+"id": 112,
+"spent": 60,
+"done": true
+},
+{
+"id": 81,
+"spent": 60,
+"done": true
+},
+{
+"id": 68,
+"spent": 250,
+"done": true
+}
+],
+"bags": [
+{
+"id": 9448,
+"size": 15,
+"inventory": [
+{
+"id": 23045,
+"count": 1,
+"charges": 37,
+"binding": "Account"
+},
+{
+"id": 66961,
+"count": 1,
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 17320,
+"count": 1,
+"skin": 4266,
+"upgrades": [
+24618
+],
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 17325,
+"count": 1,
+"upgrades": [
+24617
+],
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 26405,
+"count": 1,
+"upgrades": [
+24580
+],
+"binding": "Character",
+"bound_to": "Lazeen"
+},
+{
+"id": 43362,
+"count": 7
+},
+{
+"id": 36084,
+"count": 3
+},
+{
+"id": 9251,
+"count": 4,
+"binding": "Account"
+},
+{
+"id": 38050,
+"count": 5,
+"binding": "Account"
+},
+{
+"id": 43359,
+"count": 5
+},
+{
+"id": 19996,
+"count": 2,
+"binding": "Account"
+},
+{
+"id": 67280,
+"count": 5,
+"binding": "Account"
+},
+{
+"id": 20018,
+"count": 3,
+"binding": "Account"
+},
+{
+"id": 20017,
+"count": 3,
+"binding": "Account"
+},
+{
+"id": 19984,
+"count": 3,
+"binding": "Account"
+}
+]
+},
+{
+"id": 8932,
+"size": 20,
+"inventory": [
+{
+"id": 23001,
+"count": 1,
+"charges": 67,
+"binding": "Account"
+},
+{
+"id": 23000,
+"count": 1,
+"charges": 12,
+"binding": "Account"
+},
+{
+"id": 23001,
+"count": 1,
+"charges": 100,
+"binding": "Account"
+},
+{
+"id": 23000,
+"count": 1,
+"charges": 100,
+"binding": "Account"
+},
+{
+"id": 22997,
+"count": 1,
+"charges": 50,
+"binding": "Account"
+},
+{
+"id": 36041,
+"count": 250
+},
+{
+"id": 68109,
+"count": 2,
+"binding": "Account"
+},
+{
+"id": 36059,
+"count": 85
+},
+{
+"id": 36060,
+"count": 66
+},
+{
+"id": 36076,
+"count": 4
+},
+{
+"id": 36074,
+"count": 5
+},
+{
+"id": 36061,
+"count": 69
+},
+{
+"id": 36080,
+"count": 6
+},
+{
+"id": 36041,
+"count": 219
+},
+{
+"id": 67371,
+"count": 3
+},
+{
+"id": 67367,
+"count": 10
+},
+{
+"id": 36077,
+"count": 2
+},
+{
+"id": 36081,
+"count": 1
+},
+{
+"id": 67368,
+"count": 4
+},
+null
+]
+},
+{
+"id": 36729,
+"size": 20,
+"inventory": [
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null
+]
+},
+{
+"id": 9576,
+"size": 18,
+"inventory": [
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null
+]
+},
+{
+"id": 9566,
+"size": 18,
+"inventory": [
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null,
+null
+]
+}
+]
+}
+}

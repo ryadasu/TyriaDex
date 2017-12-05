@@ -15,17 +15,18 @@
         android:layout_width="50dp"
         android:layout_height="50dp"
         android:layout_alignParentLeft="true"
+        android:layout_marginTop="4dp"
         />
 
     <TextView
         android:id="@+id/tv_trading_list_name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@+id/iv_wallet_list_icon"
-        android:layout_toRightOf="@+id/iv_wallet_list_icon"
+        android:layout_toEndOf="@+id/iv_trading_list_icon"
+        android:layout_toRightOf="@+id/iv_trading_list_icon"
         android:textColor="@color/primaryTextColor"
         android:padding="4dp"
-        android:layout_margin="4dp"
+        android:layout_marginLeft="6dp"
         android:textSize="16sp"
         />
 
@@ -33,10 +34,12 @@
         android:id="@+id/tv_trading_list_cost"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_toEndOf="@+id/iv_trading_list_icon"
+        android:layout_toRightOf="@+id/iv_trading_list_icon"
         android:layout_below="@id/tv_trading_list_name"
         android:padding="4dp"
-        android:layout_margin="4dp"
-        android:textSize="12sp"
+        android:layout_marginLeft="6dp"
+        android:textSize="14sp"
         />
 
 </RelativeLayout>

@@ -3,16 +3,16 @@
   <component name="HistoryComponent">
     <option name="urls">
       <array>
-        <option value="https://api.guildwars2.com/v2/currencies/" />
         <option value="https://api.guildwars2.com/v2/account/bank?access_token=" />
-        <option value="https://api.guildwars2.com/v2/account/wallet?access_token=" />
+        <option value="https://api.guildwars2.com/v2/commerce/transactions/current/buys?access_token=" />
+        <option value="https://api.guildwars2.com/v2/characters?access_token=" />
         <option value="https://api.guildwars2.com/v2/account?access_token=" />
+        <option value="https://api.guildwars2.com/v2/currencies/" />
+        <option value="https://api.guildwars2.com/v2/account/wallet?access_token=" />
         <option value="https://api.guildwars2.com/v2/characters/?access_token=" />
         <option value="https://api.guildwars2.com/v2/items/" />
         <option value="https://api.guildwars2.com/v2/commerce/delivery?access_token=" />
-        <option value="https://api.guildwars2.com/v2/commerce/transactions/history/sells?access_token=" />
         <option value="https://api.guildwars2.com/v2/commerce/transactions/history/buys?access_token=" />
-        <option value="https://api.guildwars2.com/v2/characters?access_token=" />
       </array>
     </option>
   </component>
