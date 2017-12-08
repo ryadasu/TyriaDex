@@ -4,15 +4,19 @@ import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.luke.tyriadex.model.beans.AllCharactersResult;
 import com.magnet.android.mms.exception.SchemaException;
 
 import java.util.ArrayList;
@@ -26,19 +30,52 @@ import java.util.stream.Collectors;
 
 public class CharacterFragment extends Fragment {
 
-//    OnDataPass dataPasser;
     String apiKey = null;
-//
-//    public interface OnDataPass {
-//        void onDataPass(String data);
-//    }
-//
-//    public void passData(String data) {
-//        dataPasser.onDataPass(data);
-//    }
+    ProgressBar loading;
+    TabLayout tabLayout;
+    ViewPager viewPager;
+    CharacterPagerAdapter adapter;
+    View rootView;
+    Bundle args;
+    List<AllCharactersResult> characterDetails;
 
     public CharacterFragment() {
         //
+    }
+
+    private class AllCharactersAsyncCall extends AsyncTask<String, Void, List<AllCharactersResult>> {
+
+
+        public AllCharactersAsyncCall() {
+            //
+        }
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            loading.setVisibility(View.VISIBLE);
+        }
+
+        @Override
+        protected List<AllCharactersResult> doInBackground(String... params) {
+            List<AllCharactersResult> result = null;
+            try {
+                result = ApiCall.getAllCharacters(params[0]);
+            } catch (SchemaException e) {
+                e.printStackTrace();
+            }
+            return result;
+        }
+
+        @Override
+        protected void onPostExecute(List<AllCharactersResult> result) {
+            if (result != null) {
+                characterDetails = result;
+
+                CharacterNamesAsyncCall charNameAsync = new CharacterNamesAsyncCall();
+                charNameAsync.execute(apiKey);
+            }
+        }
     }
 
 
@@ -67,11 +104,9 @@ public class CharacterFragment extends Fragment {
 
     private class CharacterNamesAsyncCall extends AsyncTask<String, Void, List<String>> {
 
-        TextView tvN, tvD;
 
-        public CharacterNamesAsyncCall(TextView tvNames, TextView tvDetails) {
-            tvN = tvNames;
-            tvD = tvDetails;
+        public CharacterNamesAsyncCall() {
+            //
         }
 
         public List<String> doInBackground(String... params) {
@@ -82,23 +117,42 @@ public class CharacterFragment extends Fragment {
                 e.printStackTrace();
             }
 
-            if (result != null) {
-                String s = result.get(2);
-                CharacterDetailsAsyncCall async = new CharacterDetailsAsyncCall(tvD);
-                Log.d("LOG", s);
-                async.execute(s, apiKey);
-            }
-
             return result;
         }
 
         public void onPostExecute(List<String> result) {
-            String text = "";
+            loading.setVisibility(View.INVISIBLE);
+            if (result != null) {
+                for (String name : result) {
+                    tabLayout.addTab(tabLayout.newTab().setText(name));
+                }
 
-            for (String s: result) {
-                text += (s + ", ");
+                viewPager = rootView.findViewById(R.id.pager);
+                adapter = new CharacterPagerAdapter(getChildFragmentManager(), tabLayout.getTabCount(), characterDetails);
+                viewPager.setAdapter(adapter);
+                viewPager.addOnPageChangeListener(new TabLayout.TabLayoutOnPageChangeListener(tabLayout));
+                tabLayout.addOnTabSelectedListener(new TabLayout.OnTabSelectedListener() {
+                    @Override
+                    public void onTabSelected(TabLayout.Tab tab) {
+                        int index = tab.getPosition();
+                        viewPager.setCurrentItem(index);
+                    }
+
+                    @Override
+                    public void onTabUnselected(TabLayout.Tab tab) {
+
+                    }
+
+                    @Override
+                    public void onTabReselected(TabLayout.Tab tab) {
+
+                    }
+                });
+
             }
-            tvN.setText(text.substring(0, text.length() - 2));
+            else {
+                Log.e("LOG", "Character names call result is null");
+            }
         }
     }
 
@@ -106,20 +160,22 @@ public class CharacterFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        View rootView = inflater.inflate(R.layout.fragment_character, container, false);
-        Bundle args = getArguments();
+        rootView = inflater.inflate(R.layout.fragment_character, container, false);
+        args = getArguments();
         if (args != null) {
             apiKey = args.getString("key");
         }
         Log.d("LOG", "Character Fragment load api key: " + apiKey);
 
         ApiCall.update(getContext());
-        ((MainActivity) getActivity()).setToolbarTitle("TyriaDex: Characters");
+        ((MainActivity) getActivity()).setToolbarTitle("Characters");
 
-        TextView tvNames = rootView.findViewById(R.id.tv_characters);
-        TextView tvDetails = rootView.findViewById(R.id.tv_char_detail);
-        CharacterNamesAsyncCall async = new CharacterNamesAsyncCall(tvNames, tvDetails);
-        async.execute(apiKey);
+        loading = rootView.findViewById(R.id.pb_character_loading);
+        tabLayout = rootView.findViewById(R.id.tab_layout);
+
+        AllCharactersAsyncCall allDetailsAsync = new AllCharactersAsyncCall();
+        allDetailsAsync.execute(apiKey);
+
 
         return rootView;
     }

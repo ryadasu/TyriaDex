@@ -75,10 +75,11 @@ public class ApiFragment extends Fragment {
         Log.d("LOG", "API Fragment load api key: " + apiKey);
         ((MainActivity) getActivity()).setToolbarTitle("TyriaDex: Api Key");
 
+        ApiCall.update(getContext());
+
 
         final TextView accountName = rootView.findViewById(R.id.tv_api_account);
-        AccountAsyncCall accountAsyncCall = new AccountAsyncCall(accountName);
-        accountAsyncCall.execute(apiKey);
+
 
         final EditText editTextApiKey = rootView.findViewById(R.id.et_api_key);
         editTextApiKey.setText(apiKey);
@@ -92,6 +93,7 @@ public class ApiFragment extends Fragment {
                 else {
                     apiKey = editTextApiKey.getText().toString();
                     passData(apiKey);
+                    Toast.makeText(getContext(), "API key saved", Toast.LENGTH_SHORT).show();
                     Log.d("LOG", "API Fragment set api key: " + apiKey);
                     AccountAsyncCall accountAsyncCall = new AccountAsyncCall(accountName);
                     accountAsyncCall.execute(apiKey);
@@ -109,6 +111,12 @@ public class ApiFragment extends Fragment {
                 accountName.setText("None");
             }
         });
+
+
+        if (apiKey != null) {
+            AccountAsyncCall accountAsyncCall = new AccountAsyncCall(accountName);
+            accountAsyncCall.execute(apiKey);
+        }
 
         return rootView;
     }

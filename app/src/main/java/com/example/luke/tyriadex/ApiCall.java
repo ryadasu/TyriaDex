@@ -7,6 +7,7 @@ import android.util.Log;
 import com.example.luke.tyriadex.controller.api.GW2API;
 import com.example.luke.tyriadex.controller.api.GW2APIFactory;
 import com.example.luke.tyriadex.model.beans.AccountResult;
+import com.example.luke.tyriadex.model.beans.AllCharactersResult;
 import com.example.luke.tyriadex.model.beans.BankResult;
 import com.example.luke.tyriadex.model.beans.CharacterByNameResult;
 import com.example.luke.tyriadex.model.beans.CurrencyByIdResult;
@@ -53,6 +54,25 @@ public class ApiCall {
 
     public static void update(Context con) {
         c = con;
+    }
+
+    public static List<AllCharactersResult> getAllCharacters(String key) throws SchemaException {
+        MagnetMobileClient magnetClient = MagnetMobileClient.getInstance(c);
+        controllerFactory = new GW2APIFactory(magnetClient);
+        api = controllerFactory.obtainInstance();
+
+        Call<List<AllCharactersResult>> callObject = api.getAllCharacters("0", key, null);
+        Log.d("LOG", callObject.toString());
+        List<AllCharactersResult> result = null;
+        try {
+            result = callObject.get();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        }
+
+        return result;
     }
 
     public static DeliveryResult getDeliveryObject(String key) throws SchemaException {
