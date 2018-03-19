@@ -5,16 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
     <TextView
-        android:id="@+id/tv_character_profession"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/tv_character_level"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
         android:padding="8dp"
         android:layout_margin="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:textColor="@color/primaryTextColor"
         />
 
     <ImageView
@@ -23,7 +25,29 @@
         android:layout_height="48dp"
         android:padding="8dp"
         android:layout_margin="8dp"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/tv_character_level"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <ImageView
+        android:id="@+id/iv_character_race"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:padding="8dp"
+        android:layout_margin="8dp"
+        app:layout_constraintStart_toEndOf="@id/iv_character_profession"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <TextView
+        android:id="@+id/tv_character_guild"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:padding="8dp"
+        android:layout_margin="8dp"
+        android:textAlignment="center"
+        android:gravity="center"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
 

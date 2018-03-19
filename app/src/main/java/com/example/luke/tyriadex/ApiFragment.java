@@ -94,6 +94,7 @@ public class ApiFragment extends Fragment {
                     apiKey = editTextApiKey.getText().toString();
                     passData(apiKey);
                     Toast.makeText(getContext(), "API key saved", Toast.LENGTH_SHORT).show();
+                    accountName.setText("Loading...");
                     Log.d("LOG", "API Fragment set api key: " + apiKey);
                     AccountAsyncCall accountAsyncCall = new AccountAsyncCall(accountName);
                     accountAsyncCall.execute(apiKey);

@@ -35,11 +35,13 @@ public class BankFragment extends Fragment {
     RecyclerView bankRecyclerView;
     BankAdapter mAdapter;
     ProgressBar loading;
+    List<BankResult> result = null;
+//    OnDataPass dataPasser;
+    static Boolean cancelled;
 
     private class BankAsyncCall extends AsyncTask<String, Void, List<BankResult>> {
 
         View rootView;
-        Boolean cancelled = false;
 
         public BankAsyncCall(View view) {
             rootView = view;
@@ -51,13 +53,19 @@ public class BankFragment extends Fragment {
             if (loading != null) {
                 loading.setVisibility(View.VISIBLE);
             }
+
+            if (result != null) {
+                loading.setVisibility(View.INVISIBLE);
+                mAdapter.setmDataSource(result);
+                mAdapter.notifyDataSetChanged();
+            }
+            cancelled = false;
+            Log.d("Bank Fragment", "API cancelled = false");
         }
 
         public List<BankResult> doInBackground(String... params) {
-            cancelled = false;
-            List<BankResult> result = null;
             try {
-                result = ApiCall.getBankObject(params[0]);
+                result = ApiCall.getBankObject(params[0], cancelled);
             } catch (SchemaException e) {
                 e.printStackTrace();
             }
@@ -67,6 +75,7 @@ public class BankFragment extends Fragment {
         @Override
         protected void onCancelled() {
             cancelled = true;
+            Log.d("Bank Fragment", "API cancelled = true");
             super.onCancelled();
         }
 
@@ -75,6 +84,7 @@ public class BankFragment extends Fragment {
                 loading.setVisibility(View.INVISIBLE);
                 mAdapter.setmDataSource(result);
                 mAdapter.notifyDataSetChanged();
+//                passData(result);
             }
         }
     }
@@ -82,6 +92,14 @@ public class BankFragment extends Fragment {
     public BankFragment() {
         //
     }
+
+//    public interface OnDataPass {
+//        void onDataPass(List<BankResult> data);
+//    }
+//
+//    public void passData(List<BankResult> data) {
+//        dataPasser.onDataPass(data);
+//    }
 
     @Nullable
     @Override
@@ -111,6 +129,12 @@ public class BankFragment extends Fragment {
         async.execute(apiKey);
 
         return rootView;
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+//        dataPasser = (OnDataPass) context;
     }
 
     @Override

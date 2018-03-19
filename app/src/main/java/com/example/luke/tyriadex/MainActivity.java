@@ -325,6 +325,7 @@ public class MainActivity extends AppCompatActivity
             case R.id.nav_bank:
                 newFragment = new BankFragment();
                 args.putString("key", getApiKey());
+//                args.putParcelable();
                 newFragment.setArguments(args);
                 break;
             case R.id.nav_tp:

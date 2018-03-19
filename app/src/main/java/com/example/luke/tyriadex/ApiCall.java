@@ -475,7 +475,7 @@ public class ApiCall {
         }
     }
 
-    public static List<BankResult> getBankObject(String key) throws SchemaException {
+    public static List<BankResult> getBankObject(String key, Boolean cancelled) throws SchemaException {
         MagnetMobileClient magnetClient = MagnetMobileClient.getInstance(c);
         controllerFactory = new GW2APIFactory(magnetClient);
         api = controllerFactory.obtainInstance();
@@ -497,13 +497,14 @@ public class ApiCall {
             }
             else {
                 for (int i = 0; i < result.size(); i++) {
-                    if (result.get(i) == null) {
-                        BankResult b = new BankResult();
-                        b.setId(0);
-                        result.set(i, b);
-                    }
-                    else {
-                        result.get(i).setItem(getItemObjectById(String.valueOf(result.get(i).getId())));
+                    if (!cancelled) {
+                        if (result.get(i) == null) {
+                            BankResult b = new BankResult();
+                            b.setId(0);
+                            result.set(i, b);
+                        } else {
+                            result.get(i).setItem(getItemObjectById(String.valueOf(result.get(i).getId())));
+                        }
                     }
                 }
             }

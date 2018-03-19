@@ -31,6 +31,7 @@ import java.util.stream.Collectors;
 public class CharacterFragment extends Fragment {
 
     String apiKey = null;
+    AllCharactersAsyncCall async;
     ProgressBar loading;
     TabLayout tabLayout;
     ViewPager viewPager;
@@ -104,9 +105,17 @@ public class CharacterFragment extends Fragment {
 
     private class CharacterNamesAsyncCall extends AsyncTask<String, Void, List<String>> {
 
+        Boolean cancelled;
 
         public CharacterNamesAsyncCall() {
             //
+        }
+
+        @Override
+        protected void onPreExecute() {
+            cancelled = false;
+
+            super.onPreExecute();
         }
 
         public List<String> doInBackground(String... params) {
@@ -120,9 +129,15 @@ public class CharacterFragment extends Fragment {
             return result;
         }
 
+        @Override
+        protected void onCancelled() {
+            cancelled = true;
+            super.onCancelled();
+        }
+
         public void onPostExecute(List<String> result) {
-            loading.setVisibility(View.INVISIBLE);
-            if (result != null) {
+            if (!cancelled && result != null) {
+                loading.setVisibility(View.INVISIBLE);
                 for (String name : result) {
                     tabLayout.addTab(tabLayout.newTab().setText(name));
                 }
@@ -173,8 +188,8 @@ public class CharacterFragment extends Fragment {
         loading = rootView.findViewById(R.id.pb_character_loading);
         tabLayout = rootView.findViewById(R.id.tab_layout);
 
-        AllCharactersAsyncCall allDetailsAsync = new AllCharactersAsyncCall();
-        allDetailsAsync.execute(apiKey);
+        async = new AllCharactersAsyncCall();
+        async.execute(apiKey);
 
 
         return rootView;
@@ -184,6 +199,15 @@ public class CharacterFragment extends Fragment {
     public void onAttach(Context context) {
         super.onAttach(context);
 //        dataPasser = (OnDataPass) context;
+    }
+
+    @Override
+    public void onDetach() {
+        if (async != null) {
+            async.cancel(true);
+        }
+
+        super.onDetach();
     }
 
 }

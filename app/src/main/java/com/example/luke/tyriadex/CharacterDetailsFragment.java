@@ -37,9 +37,13 @@ public class CharacterDetailsFragment extends Fragment {
         }
         ApiCall.update(getContext());
 
-        TextView tvCharProfession = rootView.findViewById(R.id.tv_character_profession);
+        TextView tvCharLevel = rootView.findViewById(R.id.tv_character_level);
         ImageView ivCharProfession = rootView.findViewById(R.id.iv_character_profession);
-        tvCharProfession.setText(charDetails.getProfession());
+        ImageView ivCharRace = rootView.findViewById(R.id.iv_character_race);
+        TextView tvCharGuild = rootView.findViewById(R.id.tv_character_guild);
+
+        tvCharLevel.setText(charDetails.getLevel().toString());
+//        tvCharGuild.setText(charDetails.getGuild());
 
         switch(charDetails.getProfession()) {
             case "Elementalist":
@@ -97,6 +101,40 @@ public class CharacterDetailsFragment extends Fragment {
                         .into(ivCharProfession);
                 break;
         }
+
+        switch(charDetails.getRace()) {
+            case "Human":
+                Picasso.with(rootView.getContext())
+                        .load(R.drawable.human)
+                        .fit()
+                        .into(ivCharRace);
+                break;
+            case "Charr":
+                Picasso.with(rootView.getContext())
+                        .load(R.drawable.charr)
+                        .fit()
+                        .into(ivCharRace);
+                break;
+            case "Asura":
+                Picasso.with(rootView.getContext())
+                        .load(R.drawable.asura)
+                        .fit()
+                        .into(ivCharRace);
+                break;
+            case "Norn":
+                Picasso.with(rootView.getContext())
+                        .load(R.drawable.norn)
+                        .fit()
+                        .into(ivCharRace);
+                break;
+            case "Sylvari":
+                Picasso.with(rootView.getContext())
+                        .load(R.drawable.sylvari)
+                        .fit()
+                        .into(ivCharRace);
+                break;
+        }
+
 
         return rootView;
     }
