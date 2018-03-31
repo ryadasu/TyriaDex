@@ -30,4 +30,7 @@
     <string name="trading_current_sales">Currently Selling:</string>
     <string name="trading_past_buys">Recent Purchases:</string>
     <string name="trading_past_sales">Recent Sales:</string>
+
+    <string name="char_swap_inv">Swap to Inventory</string>
+    <string name="char_swap_equip">Swap to Equipment</string>
 </resources>

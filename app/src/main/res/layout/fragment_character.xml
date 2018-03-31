@@ -19,7 +19,6 @@
         app:tabGravity="fill"
         app:tabMode="scrollable"
         android:layout_alignParentTop="true"
-        android:minHeight="?attr/actionBarSize"
         android:theme="@style/AppTheme.NoActionBar"
         />
 

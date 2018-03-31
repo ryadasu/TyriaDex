@@ -5,6 +5,7 @@
 
 package com.example.luke.tyriadex.model.beans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -42,8 +43,26 @@ public class Equipment {
   
   private Stats stats;
 
-  
-  private List<java.lang.Integer> upgrades;
+  private ItemByIdResult item;
+  private List<ItemByIdResult> upgradeItems = new ArrayList<ItemByIdResult>();
+
+  public ItemByIdResult getItem() {
+    return item;
+  }
+
+  public void setItem(ItemByIdResult item) {
+    this.item = item;
+  }
+
+    public List<ItemByIdResult> getUpgradeItems() {
+        return upgradeItems;
+    }
+
+    public void addUpgradeItem(ItemByIdResult upgradeItem) {
+        this.upgradeItems.add(upgradeItem);
+    }
+
+    private List<java.lang.Integer> upgrades;
 
   public String getBinding() {
     return binding;
