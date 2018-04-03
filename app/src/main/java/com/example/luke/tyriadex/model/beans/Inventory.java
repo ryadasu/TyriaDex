@@ -41,7 +41,17 @@ public class Inventory {
   
   private List<java.lang.Integer> upgrades;
 
-  public String getBinding() {
+  private ItemByIdResult item;
+
+    public ItemByIdResult getItem() {
+        return item;
+    }
+
+    public void setItem(ItemByIdResult item) {
+        this.item = item;
+    }
+
+    public String getBinding() {
     return binding;
   }
   public String getBound_to() {

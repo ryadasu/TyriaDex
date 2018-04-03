@@ -103,10 +103,16 @@ public class CharacterDetailsEquipmentAdapter extends RecyclerView.Adapter<Chara
         }
         holder.itemSubtitle.setText(itemDetails);
 
+        String itemDetailsTwo = "";
+        if (result.getUpgradeItems().size() > 1) {
+            itemDetailsTwo += result.getUpgradeItems().get(1).getName();
+        }
+        holder.itemSubtitleTwo.setText(itemDetailsTwo);
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView itemSubtitle, itemName, itemLevel;
+        public TextView itemSubtitle, itemName, itemLevel, itemSubtitleTwo;
         public ImageView itemIcon;
         Context context;
 
@@ -114,9 +120,10 @@ public class CharacterDetailsEquipmentAdapter extends RecyclerView.Adapter<Chara
             super(view);
 
             context = view.getContext();
-            itemSubtitle = view.findViewById(R.id.tv_trading_list_cost);
+            itemSubtitle = view.findViewById(R.id.tv_trading_list_subtitle_one);
+            itemSubtitleTwo = view.findViewById(R.id.tv_trading_list_subtitle_two);
             itemIcon = view.findViewById(R.id.iv_trading_list_icon);
-            itemName = view.findViewById(R.id.tv_trading_list_name);
+            itemName = view.findViewById(R.id.tv_trading_list_title);
             itemLevel = view.findViewById(R.id.tv_trading_list_quantity);
         }
 

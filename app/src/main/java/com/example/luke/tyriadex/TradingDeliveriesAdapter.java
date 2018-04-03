@@ -73,7 +73,7 @@ public class TradingDeliveriesAdapter extends RecyclerView.Adapter<TradingDelive
 //            itemCost = view.findViewById(R.id.tv_trading_list_cost);
             context = view.getContext();
             itemIcon = view.findViewById(R.id.iv_trading_list_icon);
-            itemName = view.findViewById(R.id.tv_trading_list_name);
+            itemName = view.findViewById(R.id.tv_trading_list_title);
         }
 
         public Context getContext() {

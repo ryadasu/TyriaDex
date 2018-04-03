@@ -8,14 +8,15 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.luke.tyriadex.model.beans.Bag;
 import com.example.luke.tyriadex.model.beans.DeliveryResult;
+import com.example.luke.tyriadex.model.beans.Equipment;
 import com.example.luke.tyriadex.model.beans.Item;
+import com.example.luke.tyriadex.model.beans.ItemByIdResult;
 import com.example.luke.tyriadex.model.beans.TradingResult;
 import com.example.luke.tyriadex.model.beans.WalletResult;
 import com.squareup.picasso.Picasso;
 
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
 import java.util.Locale;
 
@@ -23,14 +24,14 @@ import java.util.Locale;
  * Created by luke on 28/11/17.
  */
 
-public class TradingAdapter extends RecyclerView.Adapter<TradingAdapter.ViewHolder> {
-    private List<TradingResult> mDataSource;
+public class CharacterDetailsInventoryAdapter extends RecyclerView.Adapter<CharacterDetailsInventoryAdapter.ViewHolder> {
+    private List<ItemByIdResult> mDataSource;
 
-    public TradingAdapter() {
+    public CharacterDetailsInventoryAdapter() {
         //
     }
 
-    public TradingAdapter(List<TradingResult> items) {
+    public CharacterDetailsInventoryAdapter(List<ItemByIdResult> items) {
         mDataSource = items;
     }
 
@@ -52,16 +53,16 @@ public class TradingAdapter extends RecyclerView.Adapter<TradingAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
-        TradingResult result = mDataSource.get(position);
+        ItemByIdResult result = mDataSource.get(position);
         Picasso.with(holder.getContext())
-                .load(result.getItem().getIcon())
+                .load(result.getIcon())
                 .placeholder(R.drawable.placeholder)
                 .fit()
                 .into(holder.itemIcon);
 
         int rarity;
 
-        switch (result.getItem().getRarity()) {
+        switch (result.getRarity()) {
             case("Junk"):
                 rarity = R.drawable.rarity_junk;
                 break;
@@ -93,39 +94,55 @@ public class TradingAdapter extends RecyclerView.Adapter<TradingAdapter.ViewHold
 
         holder.itemIcon.setBackgroundResource(rarity);
 
-        String itemQuantityAndName = "";
-        itemQuantityAndName += (String.valueOf(result.getQuantity() + "x " + result.getItem().getName()));
+        String levelString = "";
+        if (result.getLevel() != null) {
+            if (result.getLevel() != 0) {
+                levelString = result.getLevel().toString();
+            }
+        }
+        holder.itemLevel.setText(levelString);
 
-        holder.itemName.setText(itemQuantityAndName);
 
-        int pickupCoins = result.getPrice();
-        String pickupCoinsReadable = String.format(Locale.ENGLISH,"%05d", pickupCoins);
-        pickupCoinsReadable = new StringBuilder(pickupCoinsReadable).insert(pickupCoinsReadable.length() - 4, "g ").toString();
-        pickupCoinsReadable = new StringBuilder(pickupCoinsReadable).insert(pickupCoinsReadable.length() - 2, "s ").toString();
-        pickupCoinsReadable = new StringBuilder(pickupCoinsReadable).insert(pickupCoinsReadable.length(), "c").toString();
+        String pickupCoinsReadable = "";
+        if (result.getVendor_value() != 0) {
+            int pickupCoins = result.getVendor_value();
+            pickupCoinsReadable = String.format(Locale.ENGLISH,"%05d", pickupCoins);
+            pickupCoinsReadable = new StringBuilder(pickupCoinsReadable).insert(pickupCoinsReadable.length() - 4, "g ").toString();
+            pickupCoinsReadable = new StringBuilder(pickupCoinsReadable).insert(pickupCoinsReadable.length() - 2, "s ").toString();
+            pickupCoinsReadable = new StringBuilder(pickupCoinsReadable).insert(pickupCoinsReadable.length(), "c").toString();
+        }
+        holder.itemSubtitle.setText(pickupCoinsReadable);
 
-        holder.itemCost.setText(pickupCoinsReadable);
+        String charges = "";
+        if (result.getCount() != 1) {
+            charges = result.getCount().toString();
+            charges += "x ";
+        }
+        String name = charges + result.getName();
+        holder.itemName.setText(name);
 
-//        //"created" : "2017-11-27T05:09:26+00:00"
-//        String timeFromCreated = result.getCreated();
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssZ", Locale.UK);
-//        String date = sdf.format(new Date());
-//        // 2018-04-03T11:18:08+1000
+//        String itemDetails = "";
+//        if (result.getUpgradeItems().size() > 0) {
+//            itemDetails += result.getUpgradeItems().get(0).getName();
+//        }
+//        holder.itemSubtitle.setText(itemDetails);
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public TextView itemCost, itemName, itemTime;
+        public TextView itemSubtitle, itemName, itemLevel, itemSubtitleTwo;
         public ImageView itemIcon;
         Context context;
 
         public ViewHolder(View view) {
             super(view);
 
-            itemCost = view.findViewById(R.id.tv_trading_list_subtitle_one);
-            itemTime = view.findViewById(R.id.tv_trading_list_subtitle_two);
             context = view.getContext();
+            itemSubtitle = view.findViewById(R.id.tv_trading_list_subtitle_one);
+            itemSubtitleTwo = view.findViewById(R.id.tv_trading_list_subtitle_two);
             itemIcon = view.findViewById(R.id.iv_trading_list_icon);
             itemName = view.findViewById(R.id.tv_trading_list_title);
+            itemLevel = view.findViewById(R.id.tv_trading_list_quantity);
         }
 
         public Context getContext() {
@@ -133,11 +150,11 @@ public class TradingAdapter extends RecyclerView.Adapter<TradingAdapter.ViewHold
         }
     }
 
-    public List<TradingResult> getmDataSource() {
+    public List<ItemByIdResult> getmDataSource() {
         return mDataSource;
     }
 
-    public void setmDataSource(List<TradingResult> mDataSource) {
+    public void setmDataSource(List<ItemByIdResult> mDataSource) {
         this.mDataSource = mDataSource;
     }
 }

@@ -17,7 +17,7 @@
 
     <string name="nav_characters">Characters</string>
     <string name="nav_bank">Bank</string>
-    <string name="nav_wallet">Wallet</string>
+    <string name="nav_wallet">Currency</string>
     <string name="nav_tp">Black Lion Trading Post</string>
     <string name="nav_api">API Key</string>
     <string name="nav_settings">Settings</string>

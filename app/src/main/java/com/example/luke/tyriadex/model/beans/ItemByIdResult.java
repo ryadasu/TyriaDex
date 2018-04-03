@@ -74,6 +74,16 @@ public class ItemByIdResult {
   
   private Integer vendor_value;
 
+  private Integer count;
+
+  public Integer getCount() {
+    return count;
+  }
+
+  public void setCount(Integer count) {
+    this.count = count;
+  }
+
   public String getChat_link() {
     return chat_link;
   }

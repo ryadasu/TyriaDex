@@ -93,7 +93,7 @@ public class WalletFragment extends Fragment {
         }
         Log.d("LOG", "Wallet Fragment load api key: " + apiKey);
         ApiCall.update(getContext());
-        ((MainActivity) getActivity()).setToolbarTitle("Wallet");
+        ((MainActivity) getActivity()).setToolbarTitle("Currency");
 
         loading = rootView.findViewById(R.id.pb_wallet_loading);
 

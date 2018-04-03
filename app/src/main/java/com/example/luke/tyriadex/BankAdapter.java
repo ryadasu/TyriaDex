@@ -62,7 +62,6 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.ViewHolder> {
 
         if (bank != null) {
 
-
             int rarity;
 
             if (bank.getId() != 0) {
@@ -104,12 +103,13 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.ViewHolder> {
 
                 holder.bankIcon.setBackgroundResource(rarity);
             }
-            else {
+            else { //if empty slot
                 Picasso.with(holder.getContext())
                         .load(R.drawable.placeholder)
                         .fit()
                         .into(holder.bankIcon);
 
+                holder.bankIcon.setBackgroundResource(R.drawable.rarity_junk); //otherwise get leftover colours
             }
 
             String quantityAndName = "";
@@ -118,7 +118,10 @@ public class BankAdapter extends RecyclerView.Adapter<BankAdapter.ViewHolder> {
                 quantityAndName = "EMPTY";
             }
             else {
-                quantityAndName += (String.valueOf(bank.getCount()) + "x " + bank.getItem().getName());
+                if (bank.getCount() != 1) {
+                    quantityAndName += (String.valueOf(bank.getCount()) + "x ");
+                }
+                quantityAndName += bank.getItem().getName();
 
             }
             holder.bankName.setText(quantityAndName);
